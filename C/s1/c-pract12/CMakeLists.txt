@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.14)
+project(c_pract12)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(c_pract12_1 1.cpp)
+add_executable(c_pract12_2 2.cpp)
+add_executable(c_pract12_3 3.cpp)
+add_executable(c_pract12_4 4.cpp)
+add_executable(c_pract12_5 5.cpp)
+add_executable(c_pract12_6 6.cpp)
+add_executable(c_pract12_7 7.cpp)
+add_executable(c_pract12_8 8.cpp)
+add_executable(c_pract12_9 9.cpp)
+add_executable(c_pract12_10 10.cpp)
+add_executable(c_pract12_11 11.cpp)
+add_executable(c_pract12_13 13.cpp)
+add_executable(c_pract12_14 14.cpp)

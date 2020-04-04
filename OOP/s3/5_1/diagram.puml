@@ -1,0 +1,29 @@
+@startuml
+
+abstract class God {
+    #int height
+    #string hairColor
+    #string gender = null
+    {abstract} void show()
+}
+class Adam {
+    #int numberOfRibs
+    #Rib[] ribs
+    string gender = "male"
+    void show()
+}
+class Eva {
+    string gender = "female"
+    int ribLength
+    void show()
+}
+class Rib {
+    int length
+}
+
+God <|-- Adam
+God <|-- Eva
+Rib <|-- Eva : created from
+Adam *- Rib : has many
+
+@enduml

@@ -9,7 +9,7 @@ using namespace std;
 using namespace std::chrono;
 
 constexpr double a = 0.5;
-constexpr double b = 10;
+constexpr double b = 2;
 constexpr double h1 = 0.001;
 constexpr double h2 = 0.0001;
 constexpr double numCores1 = 7;
@@ -23,7 +23,7 @@ double F(double x) {
     return x * pow(log(x), 3) - 3 * x * pow(log(x), 2) + 6 * x * log(x) - 6 * x;
 }
 
-double calcInt(double a, double b, double h) {
+double calcIntegral(double h) {
     double result = 0;
     double n = (b - a) / h;
 
@@ -52,7 +52,7 @@ void runMetrics(double h, int numCores) {
     double jobPerCore = n / numCores;
 
     auto start = high_resolution_clock::now();
-    double serialResult = calcInt(a, b, h);
+    double serialResult = calcIntegral(h);
     auto stop = high_resolution_clock::now();
     auto serialDuration = duration_cast<nanoseconds>(stop - start);
 
@@ -65,8 +65,6 @@ void runMetrics(double h, int numCores) {
     for (int i = 0; i < numCores; i++) {
         double begin = i * jobPerCore;
         double end = begin + jobPerCore;
-
-//        if (i == numCores - 1) end = b;
 
         threadList.emplace_back(
                 threadF,

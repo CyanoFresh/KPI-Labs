@@ -59,7 +59,7 @@ public class Main {
         Main ss = new Main(NUMBER_OF_CPU, NUMBER_OF_FLOWS, NUMBER_OF_QUEUE, NUMBER_OF_PROCESS);  //  by default generate 25 process by each flow
 
         for (int i = 0; i < ss.flows.length; i++) {
-            ss.flows[i].setQueue(ss.queues[0]);
+            ss.flows[i].setQueue(ss.queues[i]);
         }
 
         for (int i = 0; i < ss.cpuThreads.length; i++) {

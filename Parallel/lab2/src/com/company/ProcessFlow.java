@@ -27,9 +27,9 @@ public class ProcessFlow implements Runnable {
      *
      * @return generated process object
      */
-    public Process genProcess() {
+    public CPUProcess genProcess() {
         int timeToNext = (int) (Math.random() * (MAX_TIME_TO_NEXT - MIN_TIME_TO_NEXT) + MIN_TIME_TO_NEXT);
-        return new Process(timeToNext, id);
+        return new CPUProcess(timeToNext, id);
     }
 
     /**
@@ -41,7 +41,7 @@ public class ProcessFlow implements Runnable {
     public void run() {
         try {
             for (int i = 0; i < n; i++) {
-                Process p = genProcess();
+                CPUProcess p = genProcess();
                 queue.add(p);
 
                 System.out.println(String.format("Spawned %s  %s time:%4d", p, this, p.getTime()));

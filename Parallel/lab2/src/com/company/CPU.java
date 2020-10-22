@@ -9,7 +9,7 @@ public class CPU implements Runnable {
     private final int id = counter++;
     private final int time;
     private boolean busy;
-    private Process process;
+    private CPUProcess process;
 
     public int processedCount = 0;
 
@@ -18,13 +18,13 @@ public class CPU implements Runnable {
         busy = false;
     }
 
-    public synchronized void setTask(Process p) {
+    public synchronized void setTask(CPUProcess p) {
         setProcess(p);
         setBusy(true);
         System.out.println(p + " is being processed by " + this);
     }
 
-    public synchronized void setProcess(Process process) {
+    public synchronized void setProcess(CPUProcess process) {
         this.process = process;
     }
 

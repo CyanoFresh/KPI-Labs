@@ -1,12 +1,12 @@
 package com.company;
 
-public class Process implements Runnable {
+public class CPUProcess implements Runnable {
     private static int counter = 0;
     private int id;
     private final int time;   // time to next process
     private final int flow;
 
-    public Process(int time, int flow) {
+    public CPUProcess(int time, int flow) {
         this.time = time;
         this.flow = flow;
         setId();

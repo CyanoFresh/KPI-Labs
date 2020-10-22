@@ -7,7 +7,9 @@ import java.util.concurrent.Semaphore;
 public class ReaderWritersProblem {
     static Semaphore readLock = new Semaphore(1, true);
     static Semaphore writeLock = new Semaphore(1, true);
-    static Semaphore x = new Semaphore(1, true), y = new Semaphore(1, true), z = new Semaphore(1, true);
+    static Semaphore x = new Semaphore(1, true),
+            y = new Semaphore(1, true),
+            z = new Semaphore(1, true);
     static int readCount = 0;
     static int writeCount = 0;
 
@@ -28,9 +30,9 @@ public class ReaderWritersProblem {
                 readLock.release();
                 z.release();
 
-                System.out.println("Thread " + Thread.currentThread().getName() + " is READING");
+                System.out.println(Thread.currentThread().getName() + " читає");
                 Thread.sleep(1500);
-                System.out.println("Thread " + Thread.currentThread().getName() + " has FINISHED READING");
+                System.out.println(Thread.currentThread().getName() + " завершив читання");
 
                 x.acquire();
                 readCount--;
@@ -56,9 +58,9 @@ public class ReaderWritersProblem {
                 y.release();
 
                 writeLock.acquire();
-                System.out.println("Thread " + Thread.currentThread().getName() + " is WRITING");
+                System.out.println(Thread.currentThread().getName() + " пише");
                 Thread.sleep(2500);
-                System.out.println("Thread " + Thread.currentThread().getName() + " has finished WRITING");
+                System.out.println(Thread.currentThread().getName() + " завершив писати");
                 writeLock.release();
 
                 y.acquire();

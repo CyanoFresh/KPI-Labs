@@ -1,0 +1,7 @@
+program Main {
+    integer a = 1;
+    real b = 4.5;
+    boolean c = true;
+    for real i = b - 5 by 2.3*1.2 while i < 3 do write(i);
+    if(c) write(b); }
+}

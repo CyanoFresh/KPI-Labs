@@ -26,6 +26,8 @@ const tokens = {
   '>=': 'rel_op',
   '==': 'rel_op',
   '!=': 'rel_op',
+  '&&': 'bool_op',
+  '||': 'bool_op',
   '.': 'dot',
   ' ': 'ws',
   '\n': 'nl',
@@ -44,8 +46,12 @@ const stf = [
   [0, 'Digit', 4],
   [4, 'Digit', 4],
   [4, 'dot', 5],
+  [4, 'e', 3],
+  [3, 'Digit', 5],
+  [3, '-', 5],
   [4, 'other', 9],
   [5, 'Digit', 5],
+  [5, 'e', 3],
   [5, 'other', 6],
   [0, 'ws', 0],
   [0, 'nl', 13],
@@ -84,6 +90,16 @@ const states = {
   const: [6, 9],
   ident: [2],
   final: [2, 6, 9, 11, 12, 13, 14, 16, 18, 19, 101, 102, 103, 104],
+  exp: [4, 5],
+};
+
+const charClasses = {
+  dot: '.',
+  Letter: 'abcdefghijklmnopqrstuvwxyz',
+  Digit: '0123456789',
+  ws: ' ',
+  nl: '\n',
+  operators: '+-!=*/^<>&|(){}',
 };
 
 const initState = 0; // q0 - стартовий стан
@@ -99,7 +115,7 @@ let tableConst = [];
 let tableSymbols = [];
 
 function lex() {
-  const sourceCode = fs.readFileSync('./input_full.xx').toString();
+  const sourceCode = fs.readFileSync('./unknown_lexem.xx').toString();
 
   while (charIndex < sourceCode.length) {
     char = sourceCode.charAt(charIndex);
@@ -131,13 +147,12 @@ function processing() {
     state = initState;
   } else if ([...states.const, ...states.ident].includes(state)) {
     const token = getToken(state, lexeme);
-    let index;
+    let index = '';
 
     if (token !== 'keyword') {
       index = indexIdConst(state, lexeme);
     }
 
-    console.log({ line, lexeme, token, index });
     tableSymbols.push({ line, lexeme, token, index });
 
     lexeme = '';
@@ -149,7 +164,6 @@ function processing() {
 
     const token = getToken(state, lexeme);
 
-    console.log({ line, lexeme, token });
     tableSymbols.push({ line, lexeme, token });
 
     lexeme = '';
@@ -184,9 +198,9 @@ function indexIdConst(state, lexeme) {
     }
 
     return tableConst.push(lexeme) - 1;
-  } else {
-    throw new Error('Invalid state');
   }
+
+  throw new Error('Invalid state ' + state + ' and lexeme ' + lexeme);
 }
 
 /**
@@ -195,9 +209,14 @@ function indexIdConst(state, lexeme) {
  * @returns {number}
  */
 function nextState(state, charClass) {
+  // Exponential form hack:
+  if (states.exp.includes(state) && charClass === 'Letter' && char.toLowerCase() === 'e') {
+    return nextState(state, char.toLowerCase());
+  }
+
   const stfRow = stf.find(row => row[0] === state && row[1] === charClass);
 
-  if (stfRow === undefined) {
+  if (stfRow === undefined && charClass !== 'other') {
     return nextState(state, 'other');
   }
 
@@ -209,37 +228,25 @@ function nextState(state, charClass) {
  * @returns {string}
  */
 function getCharClass(char) {
-  if (char === '.') {
-    return 'dot';
-  }
+  for (const [charClass, value] of Object.entries(charClasses)) {
+    if (value.includes(char.toLowerCase())) {
+      if (charClass === 'operators') {
+        return char;
+      }
 
-  if ('abcdefghijklmnopqrstuvwxyz'.includes(char.toLowerCase())) {
-    return 'Letter';
-  }
-
-  if ('0123456789'.includes(char)) {
-    return 'Digit';
-  }
-
-  if (char === ' ') {
-    return 'ws';
-  }
-
-  if (char === '\n') {
-    return 'nl';
-  }
-
-  if ('+-!=*/^<>&|(){}'.includes(char)) {
-    return char;
+      return charClass;
+    }
   }
 
   throw new Error('Unknown char "' + char + '" on line ' + line);
 }
 
-lex();
-
-console.log({ tableConst });
-console.log({ tableIds });
-console.log({ tableSymbols });
+try {
+  lex();
+} finally {
+  console.log({ tableConst });
+  console.log({ tableIds });
+  console.log({ tableSymbols });
+}
 
 module.exports = { lex };

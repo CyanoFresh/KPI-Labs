@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "private": true,
-  "main": "index.js",
+  "main": "lexer.js",
   "scripts": {
     "test": "jest"
   },

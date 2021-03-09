@@ -1,26 +1,40 @@
 const fs = require('fs');
 
 const tokens = {
+  true: 'boolval',
+  false: 'boolval',
   program: 'keyword',
+  integer: 'keyword',
+  real: 'keyword',
+  boolean: 'keyword',
+  read: 'keyword',
+  write: 'keyword',
   if: 'keyword',
   for: 'keyword',
   by: 'keyword',
   while: 'keyword',
+  do: 'keyword',
   '=': 'assign_op',
-  '.': 'dot',
-  ' ': 'ws',
-  '\n': 'nl',
-  '\r': 'nl',
   '-': 'add_op',
   '+': 'add_op',
   '*': 'mult_op',
   '/': 'mult_op',
-  '(': 'par_op',
-  ')': 'par_op',
+  '^': 'pow_op',
+  '>': 'rel_op',
+  '<': 'rel_op',
+  '<=': 'rel_op',
+  '>=': 'rel_op',
+  '==': 'rel_op',
+  '!=': 'rel_op',
+  '.': 'dot',
+  ' ': 'ws',
+  '\n': 'nl',
+  '(': 'brackets_op',
+  ')': 'brackets_op',
   '{': 'start_block',
   '}': 'end_block',
 };
-const tableIdentFloatInt = { 2: 'ident', 6: 'real', 9: 'integer' };
+const tableIdentRealInteger = { 2: 'ident', 6: 'real', 9: 'integer' };
 
 const stf = [
   [0, 'Letter', 1],
@@ -33,26 +47,49 @@ const stf = [
   [4, 'other', 9],
   [5, 'Digit', 5],
   [5, 'other', 6],
-  [11, '=', 12],
-  [11, 'other', 102],
   [0, 'ws', 0],
   [0, 'nl', 13],
   [0, '+', 14],
   [0, '-', 14],
   [0, '*', 14],
   [0, '/', 14],
+  [0, '^', 14],
   [0, '(', 14],
   [0, ')', 14],
   [0, '{', 14],
   [0, '}', 14],
+  [0, '!', 8],
+  [8, '=', 19],
+  [8, 'other', 102],
+  [0, '>', 7],
+  [0, '<', 7],
+  [0, '=', 7],
+  [7, '=', 11],
+  [7, 'other', 12],
+  [0, '|', 15],
+  [15, '|', 16],
+  [15, 'other', 104],
+  [0, '&', 17],
+  [17, '&', 18],
+  [17, 'other', 103],
   [0, 'other', 101],
 ];
-const finalStates = [2, 4, 6, 9, 12, 13, 14, 101, 102];
-const errorStates = [101, 102];
+
+const states = {
+  newLine: [13],
+  star: [2, 6, 9, 12],
+  error: [101, 102, 103, 104],
+  operators: [19, 11, 12, 18, 16, 14],
+  double_operators: [19, 11, 18, 16],
+  const: [6, 9],
+  ident: [2],
+  final: [2, 6, 9, 11, 12, 13, 14, 16, 18, 19, 101, 102, 103, 104],
+};
+
 const initState = 0; // q0 - стартовий стан
 
 let state = initState,
-  lineIndex = 0,
+  line = 1,
   charIndex = 0,
   char = '',
   lexeme = '';
@@ -62,16 +99,16 @@ let tableConst = [];
 let tableSymbols = [];
 
 function lex() {
-  const sourceCode = fs.readFileSync('./input.xx').toString();
+  const sourceCode = fs.readFileSync('./input_full.xx').toString();
 
-  while (charIndex < sourceCode.length - 1) {
+  while (charIndex < sourceCode.length) {
     char = sourceCode.charAt(charIndex);
     const charClass = getCharClass(char);
 
     state = nextState(state, charClass);
 
-    if (finalStates.includes(state)) {
-      processing(state, char);
+    if (states.final.includes(state)) {
+      processing();
     } else if (state === initState) {
       lexeme = '';
     } else {
@@ -81,44 +118,44 @@ function lex() {
     charIndex++;
   }
 
-  console.log('Done');
+  return tableSymbols;
 }
 
 function processing() {
-  if (state === 13) {
-    // \n
-    lineIndex += 1;
+  if (states.star.includes(state)) {
+    charIndex--;
+  }
+
+  if (states.newLine.includes(state)) {
+    line++;
     state = initState;
-  } else if ([2, 6, 9].includes(state)) {
-    // keyword, ident, float, int
+  } else if ([...states.const, ...states.ident].includes(state)) {
     const token = getToken(state, lexeme);
+    let index;
 
     if (token !== 'keyword') {
-      const index = indexIdConst(state, lexeme);
-      console.log({ lineIndex, lexeme, token, index });
-      tableSymbols.push({ lineIndex, lexeme, token, index });
-    } else {
-      console.log({ lineIndex, lexeme, token });
-      tableSymbols.push({ lineIndex, lexeme, token });
+      index = indexIdConst(state, lexeme);
     }
 
+    console.log({ line, lexeme, token, index });
+    tableSymbols.push({ line, lexeme, token, index });
+
     lexeme = '';
-    charIndex--;
     state = initState;
-  } else if ([12, 14].includes(state)) {
-    lexeme += char;
+  } else if (states.operators.includes(state)) {
+    if (lexeme === '' || states.double_operators.includes(state)) {
+      lexeme += char;
+    }
+
     const token = getToken(state, lexeme);
-    console.log({ lineIndex, lexeme, token });
-    tableSymbols.push({ lineIndex, lexeme, token });
+
+    console.log({ line, lexeme, token });
+    tableSymbols.push({ line, lexeme, token });
 
     lexeme = '';
     state = initState;
-  } else if (errorStates.includes(state)) {
-    if (state === 101) {
-      console.error(`Unknown char at line ${lineIndex}: ${char}`);
-    } else {
-      console.error(`Error at line ${lineIndex}: ${char}`);
-    }
+  } else if (states.error.includes(state)) {
+    console.error(`(${state}) Unknown char "${char}" at line ${line}`);
   }
 }
 
@@ -127,13 +164,11 @@ function getToken(state, lexeme) {
     return tokens[lexeme];
   }
 
-  return tableIdentFloatInt[state];
+  return tableIdentRealInteger[state];
 }
 
 function indexIdConst(state, lexeme) {
-  lexeme = lexeme.toLowerCase();
-
-  if (state === 2) {
+  if (states.ident.includes(state)) {
     const index = tableIds.indexOf(lexeme);
 
     if (index !== -1) {
@@ -141,7 +176,7 @@ function indexIdConst(state, lexeme) {
     }
 
     return tableIds.push(lexeme) - 1;
-  } else if (state === 6 || state === 9) {
+  } else if (states.const.includes(state)) {
     const index = tableConst.indexOf(lexeme);
 
     if (index !== -1) {
@@ -149,6 +184,8 @@ function indexIdConst(state, lexeme) {
     }
 
     return tableConst.push(lexeme) - 1;
+  } else {
+    throw new Error('Invalid state');
   }
 }
 
@@ -158,17 +195,13 @@ function indexIdConst(state, lexeme) {
  * @returns {number}
  */
 function nextState(state, charClass) {
-  let newState = stf.find(row => row[0] === state && row[1] === charClass)?.[2];
+  const stfRow = stf.find(row => row[0] === state && row[1] === charClass);
 
-  if (newState === undefined) {
-    newState = stf.find(row => row[0] === state && row[1] === 'other')?.[2];
+  if (stfRow === undefined) {
+    return nextState(state, 'other');
   }
 
-  if (newState === undefined) {
-    throw new Error('Unknown new state');
-  }
-
-  return newState;
+  return stfRow[2];
 }
 
 /**
@@ -192,15 +225,15 @@ function getCharClass(char) {
     return 'ws';
   }
 
-  if ('\r\n'.includes(char)) {
+  if (char === '\n') {
     return 'nl';
   }
 
-  if ('+-=*/(){}'.includes(char)) {
+  if ('+-!=*/^<>&|(){}'.includes(char)) {
     return char;
   }
 
-  throw new Error('Unknown char: ' + char);
+  throw new Error('Unknown char "' + char + '" on line ' + line);
 }
 
 lex();
@@ -208,3 +241,5 @@ lex();
 console.log({ tableConst });
 console.log({ tableIds });
 console.log({ tableSymbols });
+
+module.exports = { lex };

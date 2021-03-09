@@ -1,0 +1,15 @@
+program Main {
+    integer a = -3 ^ 4
+    real b = 4.5 + a - 1
+    boolean c = true
+    real d
+    boolean e = a != b || a > b
+    read(d)
+    for real i = b - 5 by 2.3 / 1.15 while i < 3 do write(i)
+    if(c && b <= 3 || d >= 5)
+        write(b)
+    }
+    if (c == false)
+        write(c)
+    }
+}

@@ -3,7 +3,6 @@ const fs = require('fs');
 const tokens = {
   true: 'boolval',
   false: 'boolval',
-  program: 'keyword',
   integer: 'keyword',
   real: 'keyword',
   boolean: 'keyword',
@@ -102,6 +101,13 @@ const charClasses = {
   operators: '+-!=*/^<>&|(){}',
 };
 
+const errorMessages = {
+  101: () => `(${state}) Unknown char "${char}" at line ${line}`,
+  102: () => `(${state}) Expected "=" after "!" at line ${line}`,
+  103: () => `(${state}) Expected "&" after "&" at line ${line}`,
+  104: () => `(${state}) Expected "|" after "|" at line ${line}`,
+};
+
 const initState = 0; // q0 - стартовий стан
 
 let state = initState,
@@ -115,7 +121,7 @@ let tableConst = [];
 let tableSymbols = [];
 
 function lex() {
-  const sourceCode = fs.readFileSync('./unknown_lexem.xx').toString();
+  const sourceCode = fs.readFileSync('./invalid.xx').toString();
 
   while (charIndex < sourceCode.length) {
     char = sourceCode.charAt(charIndex);
@@ -147,7 +153,7 @@ function processing() {
     state = initState;
   } else if ([...states.const, ...states.ident].includes(state)) {
     const token = getToken(state, lexeme);
-    let index = '';
+    let index = null;
 
     if (token !== 'keyword') {
       index = indexIdConst(state, lexeme);
@@ -164,12 +170,12 @@ function processing() {
 
     const token = getToken(state, lexeme);
 
-    tableSymbols.push({ line, lexeme, token });
+    tableSymbols.push({ line, lexeme, token, index: null });
 
     lexeme = '';
     state = initState;
   } else if (states.error.includes(state)) {
-    console.error(`(${state}) Unknown char "${char}" at line ${line}`);
+    throw new Error(errorMessages[state]());
   }
 }
 
@@ -216,11 +222,15 @@ function nextState(state, charClass) {
 
   const stfRow = stf.find(row => row[0] === state && row[1] === charClass);
 
-  if (stfRow === undefined && charClass !== 'other') {
+  if (stfRow !== undefined) {
+    return stfRow[2];
+  }
+
+  if (charClass !== 'other') {
     return nextState(state, 'other');
   }
 
-  return stfRow[2];
+  throw new Error('Unknown char "' + char + '" on line ' + line);
 }
 
 /**
@@ -244,9 +254,12 @@ function getCharClass(char) {
 try {
   lex();
 } finally {
-  console.log({ tableConst });
-  console.log({ tableIds });
-  console.log({ tableSymbols });
+  console.log('Table of constants:');
+  console.table(tableConst);
+  console.log('Table of idents:');
+  console.table(tableIds);
+  console.log('Table of symbols:');
+  console.table(tableSymbols);
 }
 
 module.exports = { lex };

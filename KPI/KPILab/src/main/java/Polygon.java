@@ -11,7 +11,7 @@ public class Polygon extends Point implements PolygonInterface {
     @Override
     @InvokeAnnotation
     public Double calcS() {
-        return (vertexCount * side) / (4 * Math.tan((Math.PI / 2) / vertexCount));
+        return (vertexCount * side * side) / (4 * Math.tan((Math.PI) / vertexCount));
     }
 
     @Override

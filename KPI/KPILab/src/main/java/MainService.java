@@ -10,6 +10,11 @@ public class MainService {
     protected Polygon polygon;
     protected Class<? extends Polygon> polygonClass;
 
+    public MainService(Polygon polygon) {
+        this.polygon = polygon;
+        this.polygonClass = polygon.getClass();
+    }
+
     public MainService(Point point, Polygon polygon) {
         this.point = point;
         this.polygon = polygon;

@@ -4,9 +4,11 @@ public class Polygon extends Point implements PolygonInterface {
 
     public Polygon(Integer x, Integer y, Integer vertexCount, Integer side) {
         super(x, y);
-        this.vertexCount = vertexCount;
-        this.side = side;
+        this.setVertexCount(vertexCount);
+        this.setSide(side);
     }
+
+    public Polygon() {}
 
     @Override
     @InvokeAnnotation
@@ -31,7 +33,7 @@ public class Polygon extends Point implements PolygonInterface {
 
     @Override
     public void setVertexCount(Integer vertexCount) {
-        this.vertexCount = vertexCount;
+        this.vertexCount = Math.abs(vertexCount);
     }
 
     @Override
@@ -41,6 +43,6 @@ public class Polygon extends Point implements PolygonInterface {
 
     @Override
     public void setSide(Integer side) {
-        this.side = side;
+        this.side = Math.abs(side);
     }
 }

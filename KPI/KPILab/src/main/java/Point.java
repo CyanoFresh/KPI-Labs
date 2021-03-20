@@ -7,6 +7,8 @@ public class Point {
         this.y = y;
     }
 
+    public Point() { }
+
     public Integer getX() {
         return x;
     }

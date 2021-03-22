@@ -1,0 +1,3 @@
+integer a = 5
+read(a)
+boolean b = 1+a

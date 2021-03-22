@@ -120,8 +120,8 @@ let tableIds = [];
 let tableConst = [];
 let tableSymbols = [];
 
-function lex() {
-  const sourceCode = fs.readFileSync('./invalid.xx').toString();
+function lex(path) {
+  const sourceCode = fs.readFileSync(path).toString();
 
   while (charIndex < sourceCode.length) {
     char = sourceCode.charAt(charIndex);
@@ -251,15 +251,15 @@ function getCharClass(char) {
   throw new Error('Unknown char "' + char + '" on line ' + line);
 }
 
-try {
-  lex();
-} finally {
-  console.log('Table of constants:');
-  console.table(tableConst);
-  console.log('Table of idents:');
-  console.table(tableIds);
-  console.log('Table of symbols:');
-  console.table(tableSymbols);
-}
+// try {
+//   lex();
+// } finally {
+//   console.log('Table of constants:');
+//   console.table(tableConst);
+//   console.log('Table of idents:');
+//   console.table(tableIds);
+//   console.log('Table of symbols:');
+//   console.table(tableSymbols);
+// }
 
 module.exports = { lex };

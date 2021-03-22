@@ -8,19 +8,13 @@ public class MainController {
     }
 
     public void run() throws Throwable {
-        var input = mainView.readInput();
-        var parts = input.split("\\s+");
-
-        if (parts.length != 4) {
-            throw new Exception("You should input 4 numbers divided by space!");
-        }
-
-        polygon.setX(Integer.parseInt(parts[0]));
-        polygon.setY(Integer.parseInt(parts[1]));
-        polygon.setVertexCount(Integer.parseInt(parts[2]));
-        polygon.setSide(Integer.parseInt(parts[3]));
-
         var service = new MainService(polygon);
+        var input = mainView.readInput();
+
+        polygon.setX(input[0]);
+        polygon.setY(input[1]);
+        polygon.setVertexCount(input[2]);
+        polygon.setSide(input[3]);
 
         mainView.print(polygon, service);
     }

@@ -11,17 +11,16 @@ public class MainView {
 
         System.out.println("Викликаємо методи з анотацією:\n" + service.callWithAnnotation());
 
-        var proxy = (PolygonInterface) MyProxy
-                .newProxyInstance(polygon);
+        var proxy = (PolygonInterface) MyProxy.newProxyInstance(polygon);
         System.out.println("\nProxy getSide(): " + proxy.getSide());
         proxy.setSide(5);
     }
 
-    public String readInput() {
-        System.out.println("Enter fields in order: x y vertexCount side");
-
+    public int[] readInput() {
         Scanner in = new Scanner(System.in);
 
-        return in.nextLine();
+        System.out.println("Enter fields in order: x y vertexCount side");
+
+        return new int[]{in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt()};
     }
 }

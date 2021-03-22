@@ -9,7 +9,7 @@ public class MainControllerIT {
         var polygon = mock(Polygon.class);
         var view = mock(MainView.class);
 
-        when(view.readInput()).thenReturn("1 2 3 4");
+        when(view.readInput()).thenReturn(new int[]{1, 2, 3, 4});
         when(polygon.calcS()).thenReturn(1.0);
 
         var controller = new MainController(polygon, view);
@@ -22,11 +22,11 @@ public class MainControllerIT {
     }
 
     @Test
-    void mockIncorrectInput() throws Throwable {
+    void mockIncorrectInput() {
         var polygon = mock(Polygon.class);
         var view = mock(MainView.class);
 
-        when(view.readInput()).thenReturn("1 2 3");
+        when(view.readInput()).thenReturn(new int[]{1, 2, 3});
 
         var controller = new MainController(polygon, view);
 

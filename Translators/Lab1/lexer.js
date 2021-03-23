@@ -140,6 +140,8 @@ function lex(path) {
     charIndex++;
   }
 
+  console.table(tableSymbols);
+
   return tableSymbols;
 }
 

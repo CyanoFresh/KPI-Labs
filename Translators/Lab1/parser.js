@@ -5,8 +5,6 @@ function parse(path) {
   let numRow = 0;
   let identLevel = 0;
 
-  console.table(tableOfSymb);
-
   function log() {
     console.log.apply(console.log, ['\t'.repeat(identLevel), ...arguments]);
     identLevel++;
@@ -17,22 +15,32 @@ function parse(path) {
 
     numRow++;
 
-    if (lex === lexeme && tok === token) {
-      // log(`parseToken(): В рядку ${line} токен: ${lexeme} ${token}`);
-      // identLevel--;
-      return true;
+    function throwError() {
+      throw new Error(`at ${path}:${line} unexpected ${token} ${lexeme}, ${tok} ${lex} expected`);
     }
 
-    throw new Error(
-      `В рядку ${line} неочікуваний елемент: ${token} ${lexeme}; очікувався: ${tok} ${lex}`,
-    );
+    if (lex) {
+      if (Array.isArray(lex) && !lex.includes(lexeme)) {
+        throwError();
+      } else if (typeof lex === 'string' && lex !== lexeme) {
+        throwError();
+      }
+    }
+
+    if (tok) {
+      if (Array.isArray(tok) && !token.includes(token)) {
+        throwError();
+      } else if (typeof tok === 'string' && tok !== token) {
+        throwError();
+      }
+    }
+
+    return true;
   }
 
   function getSymb() {
     if (numRow >= tableOfSymb.length) {
-      throw new Error(
-        `Неочікуваний кінець програми - в таблиці символів (розбору) немає запису з номером ${numRow}`,
-      );
+      throw new Error('Unexpected end of program');
     }
 
     return tableOfSymb[numRow];
@@ -83,61 +91,43 @@ function parse(path) {
       return false;
     }
 
-    throw new Error(`В рядку ${line} неочікуваний елемент ${token} ${lexeme}`);
+    throw new Error(`at ${path}:${line} unexpected ${token} ${lexeme}`);
   }
 
   function parseDeclaration() {
-    log('parseDeclaration()');
+    log('parseDeclaration():');
 
-    const { line, lexeme, token } = getSymb();
-
-    const dataTypes = ['integer', 'real', 'boolean'];
-
-    if (token === 'keyword' && dataTypes.includes(lexeme)) {
-      numRow++;
-    } else {
-      throw new Error(
-        `В рядку ${line} неочікуваний елемент ${token} ${lexeme}; очікувався keyword ${dataTypes}`,
-      );
-    }
-
+    parseToken(['integer', 'real', 'boolean'], 'keyword');
     parseAssign();
 
     identLevel--;
   }
 
   function parseAssign() {
-    log('parseAssign()');
+    log('parseAssign():');
 
-    numRow++;
-
-    if (parseToken('=', 'assign_op')) {
-      parseExpression();
-    }
+    parseToken(null, 'ident');
+    parseToken('=', 'assign_op');
+    parseExpression();
 
     identLevel--;
   }
 
   function parseIf() {
-    log('parseIf()');
+    log('parseIf():');
 
-    const { lexeme, token } = getSymb();
-
-    if (lexeme === 'if' && token === 'keyword') {
-      numRow++;
-
-      parseToken('(', 'brackets_op');
-      parseBoolExpr();
-      parseToken(')', 'brackets_op');
-      parseStatementList();
-      parseToken('}', 'end_block');
-    }
+    parseToken('if', 'keyword');
+    parseToken('(', 'brackets_op');
+    parseBoolExpr();
+    parseToken(')', 'brackets_op');
+    parseStatementList();
+    parseToken('}', 'end_block');
 
     identLevel--;
   }
 
   function parseFor() {
-    log('parseFor()');
+    log('parseFor():');
 
     parseToken('for', 'keyword');
     parseDeclaration();
@@ -152,23 +142,16 @@ function parse(path) {
   }
 
   function parseBoolExpr() {
-    log('parseBoolExpr()');
+    log('parseBoolExpr():');
 
     if (getSymb().token === 'boolval') {
       numRow++;
+      identLevel--;
       return true;
     }
 
     parseExpression();
-
-    let { line, lexeme, token } = getSymb();
-
-    if (token === 'rel_op') {
-      numRow++;
-    } else {
-      throw new Error(`В рядку ${line} неочікуваний елемент для BoolExpr: ${token} ${lexeme}`);
-    }
-
+    parseToken(null, 'rel_op');
     parseExpression();
 
     if (getSymb().token === 'bool_op') {
@@ -180,49 +163,29 @@ function parse(path) {
   }
 
   function parseInp() {
-    log('parseInp()');
+    log('parseInp():');
 
     parseToken('read', 'keyword');
     parseToken('(', 'brackets_op');
-
-    const { line, lexeme, token } = getSymb();
-
-    if (token === 'ident') {
-      numRow++;
-    } else {
-      throw new Error(
-        `В рядку ${line} неочікуваний елемент для Inp: ${token} ${lexeme}, очікувався: Ident`,
-      );
-    }
-
+    parseToken(null, 'ident');
     parseToken(')', 'brackets_op');
 
     identLevel--;
   }
 
   function parseOut() {
-    log('parseOut()');
+    log('parseOut():');
 
     parseToken('write', 'keyword');
     parseToken('(', 'brackets_op');
-
-    const { line, lexeme, token } = getSymb();
-
-    if (token === 'ident') {
-      numRow++;
-    } else {
-      throw new Error(
-        `В рядку ${line} неочікуваний елемент для Out: ${token} ${lexeme}, очікувався: Ident`,
-      );
-    }
-
+    parseToken(null, 'ident');
     parseToken(')', 'brackets_op');
 
     identLevel--;
   }
 
   function parseExpression() {
-    log('parseExpression()');
+    log('parseExpression():');
 
     if (getSymb().token === 'boolval') {
       numRow++;
@@ -249,34 +212,31 @@ function parse(path) {
   }
 
   function parseFactor() {
-    log('parseFactor()');
+    log('parseFactor():');
 
     const { line, lexeme, token } = getSymb();
 
     if (['integer', 'real', 'ident'].includes(token)) {
       numRow++;
-      // log(`В рядку ${line}: ${token} ${lexeme}`);
     } else if (lexeme === '(') {
       numRow++;
       parseExpression();
       parseToken(')', 'brackets_op');
     } else {
-      throw new Error(`В рядку ${line} неочікуваний елемент для Factor: ${token} ${lexeme}`);
+      throw new Error(`at ${path}:${line} unexpected Factor element: ${token} ${lexeme}`);
     }
 
     identLevel--;
   }
 
-  // parseToken('program', 'keyword', '');
   parseStatementList();
-  // parseToken('program', 'keyword', '');
 
   return true;
 }
 
 try {
-  if (parse('./base.xx')) {
-    console.log('\nСинтаксичний аналіз завершено успішно');
+  if (parse('./test.xx')) {
+    console.log('\nSyntax analysis successful');
   }
 } catch (e) {
   console.error(e);

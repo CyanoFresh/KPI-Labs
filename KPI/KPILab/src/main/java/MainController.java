@@ -1,21 +1,28 @@
-public class MainController {
-    Polygon polygon;
-    MainView mainView;
+import java.util.Scanner;
 
-    public MainController(Polygon polygon, MainView mainView) {
+public class MainController {
+    PolygonInterface polygon;
+    MainView view;
+    MainService service;
+    CommandFactory commandFactory = CommandFactory.getInstance();
+
+    public MainController(PolygonInterface polygon, MainView view, MainService mainService) {
         this.polygon = polygon;
-        this.mainView = mainView;
+        this.view = view;
+        this.service = mainService;
     }
 
-    public void run() throws Throwable {
-        var service = new MainService(polygon);
-        var input = mainView.readInput();
+    public void run() {
+        var in = new Scanner(System.in);
 
-        polygon.setX(input[0]);
-        polygon.setY(input[1]);
-        polygon.setVertexCount(input[2]);
-        polygon.setSide(input[3]);
+        while (true) {
+            view.printPrompt();
 
-        mainView.print(polygon, service);
+            var userCommand = in.nextLine();
+            Command command = commandFactory.getCommand(userCommand);
+            String result = command.execute();
+
+            view.printResult(result);
+        }
     }
 }

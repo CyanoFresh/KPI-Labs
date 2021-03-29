@@ -6,19 +6,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainService {
-    protected Point point;
-    protected Polygon polygon;
-    protected Class<? extends Polygon> polygonClass;
+    protected PolygonInterface polygon;
+    protected Class<? extends PolygonInterface> polygonClass;
+    protected static MainService instance = new MainService();
 
-    public MainService(Polygon polygon) {
+    private MainService() {
+    }
+
+    private MainService(PolygonInterface polygon) {
         this.polygon = polygon;
         this.polygonClass = polygon.getClass();
     }
 
-    public MainService(Point point, Polygon polygon) {
-        this.point = point;
+    public PolygonInterface getPolygon() {
+        return polygon;
+    }
+
+    public void setPolygon(PolygonInterface polygon) {
         this.polygon = polygon;
         this.polygonClass = polygon.getClass();
+    }
+
+    public static MainService getInstance() {
+        return instance;
     }
 
     public String getClassName() {
@@ -63,7 +73,9 @@ public class MainService {
     public List<String> callWithAnnotation() throws Throwable {
         var calledMethods = new ArrayList<String>();
 
-        for (Method method : polygonClass.getMethods()) {
+        var iterator = Arrays.stream(polygonClass.getMethods()).iterator();
+        while (iterator.hasNext()) {
+            Method method = iterator.next();
             if (method.isAnnotationPresent(InvokeAnnotation.class)) {
                 System.out.println(method.getName() + "() = " + method.invoke(polygon));
                 calledMethods.add(method.getName());

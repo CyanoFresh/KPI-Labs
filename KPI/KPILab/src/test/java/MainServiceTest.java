@@ -11,7 +11,8 @@ public class MainServiceTest {
 
     @BeforeEach
     void setUp() {
-        mainService = new MainService(new Point(1, 2), new Polygon(1, 2, 4, 1));
+        mainService = MainService.getInstance();
+        mainService.setPolygon(new Polygon(1, 2, 4, 1));
     }
 
     @Test

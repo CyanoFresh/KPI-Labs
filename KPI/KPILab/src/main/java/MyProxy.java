@@ -10,11 +10,8 @@ public class MyProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (method.getName().startsWith("get")) {
-            return method.invoke(ref, args);
-        }
-
-        throw new IllegalAccessException("Not allowed");
+        System.out.println("Invoking " + method.getName() + "()");
+        return method.invoke(ref, args);
     }
 
     public static Object newProxyInstance(Object obj) {

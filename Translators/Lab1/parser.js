@@ -234,10 +234,6 @@ function parse(path) {
   return true;
 }
 
-try {
-  if (parse('./test.xx')) {
-    console.log('\nSyntax analysis successful');
-  }
-} catch (e) {
-  console.error(e);
+if (parse('./test.xx')) {
+  console.log('\nSyntax analysis successful');
 }

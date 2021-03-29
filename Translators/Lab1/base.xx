@@ -1,7 +1,7 @@
 integer a = -3 ^ 4
 real b = 4.5e-1 + a - 1
 boolean c = true
-read(d)
+read(b)
 for real i = b - 5 by 2.3 / 1.15 while i < 3 do write(i)
 if(c == true && b <= 3 || d >= 5)
     write(b)

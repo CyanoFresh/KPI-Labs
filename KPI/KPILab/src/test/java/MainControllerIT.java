@@ -8,11 +8,12 @@ public class MainControllerIT {
     void mockInputAndModel() throws Throwable {
         var polygon = mock(Polygon.class);
         var view = mock(MainView.class);
+        var service = mock(MainService.class);
 
         when(view.readInput()).thenReturn(new int[]{1, 2, 3, 4});
         when(polygon.calcS()).thenReturn(1.0);
 
-        var controller = new MainController(polygon, view);
+        var controller = new MainController(polygon, view, service);
         controller.run();
 
         verify(polygon).setX(1);
@@ -25,10 +26,11 @@ public class MainControllerIT {
     void mockIncorrectInput() {
         var polygon = mock(Polygon.class);
         var view = mock(MainView.class);
+        var service = mock(MainService.class);
 
         when(view.readInput()).thenReturn(new int[]{1, 2, 3});
 
-        var controller = new MainController(polygon, view);
+        var controller = new MainController(polygon, view, service);
 
         assertThrows(Exception.class, controller::run);
     }

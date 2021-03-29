@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="13ef8fb5-01f8-49a4-b1d0-95eb154996ea" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/mvccalculator$CalculatorServiceTestJU5.ic" NAME="CalculatorServiceTestJU5 Coverage Results" MODIFIED="1550476062564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.itstep.calculator.model.junit5.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/mvccalculator$CalculatorServiceTest.coverage" NAME="CalculatorServiceTest Coverage Results" MODIFIED="1530720750284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.itstep.calculator.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/mvccalculator$org_itstep_calculator_in_mvccalculator.coverage" NAME="org.itstep.calculator in mvccalculator Coverage Results" MODIFIED="1530721350312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.itstep.calculator.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/mvccalculator$TwoArgumentParserTest.coverage" NAME="TwoArgumentParserTest Coverage Results" MODIFIED="1530727318012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.itstep.calculator.controller.parser.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/mvccalculator$All_in_mvccalculator.coverage" NAME="All in mvccalculator Coverage Results" MODIFIED="1530721289934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/mvccalculator$AddCommandTest.coverage" NAME="AddCommandTest Coverage Results" MODIFIED="1530727341161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.itstep.calculator.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/mvccalculator$CalculatorServiceTest.ic" NAME="CalculatorServiceTest Coverage Results" MODIFIED="1550476028794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.itstep.calculator.model.junit5.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myAutoScrollToSource" value="true" />
+    <option name="myAutoScrollFromSource" value="true" />
+    <option name="myElementSize" value="145" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="mvccalculator" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/model/CalculatorService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+              <folding>
+                <element signature="e#378#379#0" expanded="true" />
+                <element signature="e#415#416#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/SubCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/AddCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/OptionalSample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/CalculatorServiceTestOld.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/AddCommandTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="85" column="55" selection-start-line="85" selection-start-column="55" selection-end-line="85" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/4.3.6.RELEASE/spring-test-4.3.6.RELEASE.jar!/org/springframework/test/util/ReflectionTestUtils.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="124" column="17" lean-forward="true" selection-start-line="121" selection-start-column="8" selection-end-line="124" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/junit5/CalculatorServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1496">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.3.2/junit-jupiter-api-5.3.2.jar!/org/junit/jupiter/api/Test.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/Runner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/view/View.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/TwoArgumentParser.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/TwoArgumentParserTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/parser/TwoArgumentParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/parser/FactoryParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/parser/ParserFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/parser/TwoArgumentParserTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/CommandFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/DivCommand.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/OptionalSample.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/CalculatorServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/CalculatorServiceTestOld.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/model/CalculatorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/SubCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/AddCommand.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/AddCommandTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/junit5/CalculatorServiceTest.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="mvccalculator" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="mvccalculator" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="mvccalculator" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="51" />
+    <option name="y" value="23" />
+    <option name="width" value="1024" />
+    <option name="height" value="683" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvccalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="calculator" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="junit5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.junit.jupiter:junit-jupiter-api:5.3.2" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.junit.jupiter:junit-jupiter-api:5.3.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="junit-jupiter-api-5.3.2.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvccalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.junit.jupiter:junit-jupiter-api:5.3.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="junit-jupiter-api-5.3.2.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550491253232" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.itstep.calculator.controller" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.itstep.calculator.model" />
+      <recent name="org.itstep.calculator.controller.parser" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sds\IdeaProjects\mvccalculator\src\test\java\org\itstep\calculator\model" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.itstep.calculator.model.junit5" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.itstep.calculator.controller" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.CalculatorServiceTestJU5">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddCommandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mvccalculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.itstep.calculator.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.itstep.calculator.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.itstep.calculator.controller.AddCommandTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mvccalculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.itstep.calculator.model.junit5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.itstep.calculator.model.junit5" />
+      <option name="MAIN_CLASS_NAME" value="org.itstep.calculator.model.junit5.CalculatorServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorServiceTestJU5" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="mvccalculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.itstep.calculator.model.junit5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.itstep.calculator.model" />
+      <option name="MAIN_CLASS_NAME" value="org.itstep.calculator.model.CalculatorServiceTestOld" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorServiceTest.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mvccalculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.itstep.calculator.model.junit5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.itstep.calculator.model.junit5" />
+      <option name="MAIN_CLASS_NAME" value="org.itstep.calculator.model.junit5.CalculatorServiceTest" />
+      <option name="METHOD_NAME" value="add" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorServiceTest.divideUsualExceptionally" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mvccalculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.itstep.calculator.model.junit5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.itstep.calculator.model.junit5" />
+      <option name="MAIN_CLASS_NAME" value="org.itstep.calculator.model.junit5.CalculatorServiceTest" />
+      <option name="METHOD_NAME" value="divideUsualExceptionally" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.AddCommandTest" />
+      <item itemvalue="JUnit.CalculatorServiceTest" />
+      <item itemvalue="JUnit.CalculatorServiceTestJU5" />
+      <item itemvalue="JUnit.CalculatorServiceTest.add" />
+      <item itemvalue="JUnit.CalculatorServiceTest.divideUsualExceptionally" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CalculatorServiceTestJU5" />
+        <item itemvalue="JUnit.CalculatorServiceTest" />
+        <item itemvalue="JUnit.CalculatorServiceTest.divideUsualExceptionally" />
+        <item itemvalue="JUnit.CalculatorServiceTest.add" />
+        <item itemvalue="JUnit.AddCommandTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="13ef8fb5-01f8-49a4-b1d0-95eb154996ea" name="Default" comment="" />
+      <created>1530550383816</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1530550383816</updated>
+      <workItem from="1530550397007" duration="4984000" />
+      <workItem from="1530717406527" duration="8582000" />
+      <workItem from="1530893968692" duration="4904000" />
+      <workItem from="1531152280321" duration="6249000" />
+      <workItem from="1531310384526" duration="215000" />
+      <workItem from="1531325076808" duration="7144000" />
+      <workItem from="1531406209243" duration="822000" />
+      <workItem from="1533571484880" duration="2058000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="CalculatorServiceTestJU5 - 2019.01.23 at 17h 59m 46s.xml">
+      <configuration name="CalculatorServiceTestJU5" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest - 2019.01.23 at 18h 12m 12s.xml">
+      <configuration name="CalculatorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest - 2019.01.25 at 13h 43m 33s.xml">
+      <configuration name="CalculatorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest - 2019.02.18 at 09h 32m 25s.xml">
+      <configuration name="CalculatorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest - 2019.02.18 at 09h 39m 57s.xml">
+      <configuration name="CalculatorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest - 2019.02.18 at 09h 40m 07s.xml">
+      <configuration name="CalculatorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest_divideUsualExceptionally - 2019.02.18 at 09h 46m 10s.xml">
+      <configuration name="CalculatorServiceTest.divideUsualExceptionally" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest_divideUsualExceptionally - 2019.02.18 at 09h 46m 33s.xml">
+      <configuration name="CalculatorServiceTest.divideUsualExceptionally" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTest - 2019.02.18 at 09h 47m 09s.xml">
+      <configuration name="CalculatorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorServiceTestJU5 - 2019.02.18 at 09h 47m 43s.xml">
+      <configuration name="CalculatorServiceTestJU5" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="34958000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="51" y="23" width="1024" height="683" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23014256" />
+      <window_info id="Structure" order="1" weight="0.24962293" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Nl-Palette" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3697183" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.39761093" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info active="true" anchor="right" id="Coverage" order="0" side_tool="true" visible="true" weight="0.3879837" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Maven Projects" order="4" visible="true" weight="0.22603719" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Properties" order="9" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.24878837" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23990306" />
+      <window_info id="Structure" order="1" weight="0.24962293" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Nl-Palette" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35836178" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.39761093" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" visible="true" weight="0.30775446" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Maven Projects" order="4" visible="true" weight="0.22603719" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Properties" order="9" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.24878837" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/io/BufferedReader.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11-sources.jar!/org/junit/Assert.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/org/hamcrest/Matcher.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/org/hamcrest/CoreMatchers.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/org/hamcrest/core/Is.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar!/org/hamcrest/Matchers.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.pom" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/internal/matchers/InstanceOf.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/internal/progress/HandyReturnValues.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/Matchers.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/AdditionalAnswers.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/AdditionalAnswers.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/AdditionalMatchers.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/hamcrest/CoreMatchers.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/hamcrest/BaseMatcher.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/internal/MockitoCore.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/Mockito.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/parser/TwoArgumentParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/parser/ParserFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/util/Map.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/parser/TwoArgumentParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar!/org/mockito/internal/progress/MockingProgress.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/CommandFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/util/Optional.java" />
+    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/util/function/Function.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/DivCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/CalculatorServiceTestOld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/4.3.6.RELEASE/spring-test-4.3.6.RELEASE.jar!/org/springframework/test/util/ReflectionTestUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="124" column="17" lean-forward="true" selection-start-line="121" selection-start-column="8" selection-end-line="124" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/SubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/AddCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/AddCommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="85" column="55" selection-start-line="85" selection-start-column="55" selection-end-line="85" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/OptionalSample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.3.2/junit-jupiter-api-5.3.2.jar!/org/junit/jupiter/api/Test.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/junit5/CalculatorServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/model/CalculatorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding>
+            <element signature="e#378#379#0" expanded="true" />
+            <element signature="e#415#416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

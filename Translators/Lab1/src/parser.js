@@ -107,7 +107,10 @@ function parse(path) {
   function parseDeclaration() {
     log('parseDeclaration():');
 
-    parseToken(['integer', 'real', 'boolean'], 'keyword');
+    const { token, lexeme } = parseToken(['integer', 'real', 'boolean'], 'keyword');
+
+    postfixCode.push({ lexeme, token });
+
     parseAssign();
 
     identLevel--;

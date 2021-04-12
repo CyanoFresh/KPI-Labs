@@ -1,5 +1,3 @@
-const { parse } = require('./src/parser');
+const { interpreter } = require('./src/interpreter');
 
-if (parse('./data/test.xx')) {
-  console.log('\nSyntax analysis successful');
-}
+interpreter('./data/test.xx');

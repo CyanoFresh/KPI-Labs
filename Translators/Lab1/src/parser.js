@@ -234,6 +234,6 @@ function parse(path) {
   return true;
 }
 
-if (parse('./test.xx')) {
+if (parse('./data/test.xx')) {
   console.log('\nSyntax analysis successful');
 }

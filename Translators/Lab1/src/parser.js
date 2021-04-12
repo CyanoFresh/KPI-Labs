@@ -1,16 +1,22 @@
 const { lex } = require('./lexer');
 
 function parse(path) {
-  const tableOfSymb = lex(path);
+  const { symbols, consts, ids } = lex(path);
+
+  console.table(symbols);
+  console.table(ids);
+  console.table(consts);
+
   let numRow = 0;
   let identLevel = 0;
+  let postfixCode = [];
 
   function log() {
     console.log.apply(console.log, ['\t'.repeat(identLevel), ...arguments]);
     identLevel++;
   }
 
-  function parseToken(lex, tok) {
+  function parseToken(lex, tok, saveToPostfix = false) {
     const { line, lexeme, token } = getSymb();
 
     numRow++;
@@ -35,15 +41,19 @@ function parse(path) {
       }
     }
 
-    return true;
+    if (saveToPostfix) {
+      postfixCode.push({ lexeme, token });
+    }
+
+    return { line, lexeme, token };
   }
 
   function getSymb() {
-    if (numRow >= tableOfSymb.length) {
+    if (numRow >= symbols.length) {
       throw new Error('Unexpected end of program');
     }
 
-    return tableOfSymb[numRow];
+    return symbols[numRow];
   }
 
   function parseStatementList() {
@@ -51,7 +61,7 @@ function parse(path) {
   }
 
   function parseStatement() {
-    if (numRow >= tableOfSymb.length) {
+    if (numRow >= symbols.length) {
       return false;
     }
 
@@ -106,9 +116,11 @@ function parse(path) {
   function parseAssign() {
     log('parseAssign():');
 
-    parseToken(null, 'ident');
+    parseToken(null, 'ident', true);
     parseToken('=', 'assign_op');
     parseExpression();
+
+    postfixCode.push({ lexeme: '=', token: 'assign_op' });
 
     identLevel--;
   }
@@ -187,25 +199,57 @@ function parse(path) {
   function parseExpression() {
     log('parseExpression():');
 
+    // BoolConst => end
     if (getSymb().token === 'boolval') {
       numRow++;
       identLevel--;
       return;
     }
 
+    // Unary minus
+    let isUnaryMinus = false;
+
     if (getSymb().lexeme === '-') {
       numRow++;
+      isUnaryMinus = true;
     }
+
+    parseTerm();
+
+    if (isUnaryMinus) {
+      postfixCode.push({ lexeme: '@', token: 'unary_minus' });
+    }
+
+    while (numRow < symbols.length) {
+      const { lexeme, token } = getSymb();
+
+      if (token !== 'add_op') break;
+
+      numRow++;
+
+      parseTerm();
+
+      postfixCode.push({ lexeme, token });
+    }
+
+    identLevel--;
+  }
+
+  function parseTerm() {
+    log('parseTerm():');
 
     parseFactor();
 
-    while (
-      numRow < tableOfSymb.length &&
-      ['add_op', 'mult_op', 'pow_op'].includes(getSymb().token)
-    ) {
+    while (numRow < symbols.length) {
+      const { lexeme, token } = getSymb();
+
+      if (!['mult_op', 'pow_op'].includes(token)) break;
+
       numRow++;
 
       parseFactor();
+
+      postfixCode.push({ lexeme, token });
     }
 
     identLevel--;
@@ -217,6 +261,7 @@ function parse(path) {
     const { line, lexeme, token } = getSymb();
 
     if (['integer', 'real', 'ident'].includes(token)) {
+      postfixCode.push({ lexeme, token });
       numRow++;
     } else if (lexeme === '(') {
       numRow++;
@@ -231,9 +276,10 @@ function parse(path) {
 
   parseStatementList();
 
-  return true;
+  console.table(postfixCode);
+  console.log(postfixCode.map(row => row.lexeme).join(' '));
+
+  return { consts, ids, symbols, postfixCode };
 }
 
-if (parse('./data/test.xx')) {
-  console.log('\nSyntax analysis successful');
-}
+module.exports = { parse };

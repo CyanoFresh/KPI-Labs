@@ -6,7 +6,7 @@ function interpreter(path) {
   let stack = [];
 
   postfixCode.forEach(({ lexeme, token }) => {
-    if (['integer', 'real', 'ident'].includes(token)) {
+    if (['integer', 'real', 'ident', 'keyword'].includes(token)) {
       stack.push({ lexeme, token });
     } else {
       doIt(lexeme, token);
@@ -17,10 +17,31 @@ function interpreter(path) {
     if (lexeme === '=' && token === 'assign_op') {
       const left = stack.pop();
       const right = stack.pop();
+      const type = stack.pop();
 
       ids = ids.map(row => {
         if (row.lexeme === right.lexeme) {
           const leftConst = findConst(left.lexeme);
+
+          const isAssign = row.type === null && row.value === null;
+
+          if (isAssign) {
+            if (!type) {
+              throw new Error(`Variable ${right.lexeme} assign before declaration`);
+            }
+
+            if (type.lexeme !== leftConst.type) {
+              throw new Error(
+                `Incompatible type to assign ${leftConst.type} to ${type.lexeme} ${right.lexeme}`,
+              );
+            }
+          } else {
+            if (row.type !== leftConst.type) {
+              throw new Error(
+                `Incompatible type to assign ${leftConst.type} to ${row.type} ${row.lexeme}`,
+              );
+            }
+          }
 
           row.type = leftConst.type;
           row.value = leftConst.value;
@@ -87,18 +108,36 @@ function interpreter(path) {
   }
 
   function getValue(left, lexeme, right) {
-    let result;
+    const result = {
+      lexeme: null,
+      token: null,
+      value: null,
+    };
 
-    if (left.token !== right.token) {
+    const arithmeticTypes = ['integer', 'real'];
+
+    if (!arithmeticTypes.includes(left.token) || !arithmeticTypes.includes(right.token)) {
       throw new Error(
         `Incompatible types: ${JSON.stringify(left)} ${lexeme} ${JSON.stringify(right)}`,
       );
-    } else if (lexeme === '+') {
-      result = left.value + right.value;
+    }
+
+    if (['+', '-', '*', '^'].includes(lexeme)) {
+      if (left.token === 'real' || right.token === 'real') {
+        result.token = 'real';
+      } else {
+        result.token = 'integer';
+      }
+    } else if (['/'].includes(lexeme)) {
+      result.token = 'real';
+    }
+
+    if (lexeme === '+') {
+      result.value = left.value + right.value;
     } else if (lexeme === '-') {
-      result = left.value - right.value;
+      result.value = left.value - right.value;
     } else if (lexeme === '*') {
-      result = left.value * right.value;
+      result.value = left.value * right.value;
     } else if (lexeme === '/') {
       if (right.value === 0) {
         throw new Error(
@@ -106,15 +145,17 @@ function interpreter(path) {
         );
       }
 
-      result = left.value / right.value;
+      result.value = left.value / right.value;
     } else if (lexeme === '^') {
-      result = Math.pow(left.value, right.value);
+      result.value = left.value ** right.value;
     }
 
-    stack.push({ lexeme: result.toString(), token: left.token });
+    result.lexeme = result.value.toString();
 
-    if (consts.findIndex(row => row.lexeme === lexeme) === -1) {
-      consts.push({ type: left.token, value: result, lexeme: result.toString() });
+    stack.push({ lexeme: result.lexeme, token: result.token });
+
+    if (consts.findIndex(row => row.lexeme === result.lexeme) === -1) {
+      consts.push({ type: result.token, value: result.value, lexeme: result.lexeme });
     }
   }
 
@@ -137,6 +178,8 @@ function interpreter(path) {
 
     return row;
   }
+
+  console.log(`Interpretation has ended!`);
 
   console.table(consts);
   console.table(ids);

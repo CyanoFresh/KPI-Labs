@@ -160,23 +160,24 @@ function parse(path) {
     log('parseBoolExpr():');
 
     if (getSymb().token === 'boolean') {
-      let { token, lexeme } = getSymb();
+      const { token, lexeme } = parseToken(null, 'boolean');
       postfixCode.push({ lexeme, token });
-      numRow++;
+
       identLevel--;
       return true;
     }
 
     parseExpression();
-    let { token, lexeme } = parseToken(null, 'rel_op');
+    const { token, lexeme } = parseToken(null, 'rel_op');
     parseExpression();
 
     postfixCode.push({ lexeme, token });
 
     if (getSymb().token === 'bool_op') {
-      let { token, lexeme } = getSymb();
-      numRow++;
+      const { token, lexeme } = parseToken(null, 'bool_op');
+
       parseBoolExpr();
+
       postfixCode.push({ lexeme, token });
     }
 
@@ -208,14 +209,13 @@ function parse(path) {
   function parseExpression() {
     log('parseExpression():');
 
-    let { token, lexeme } = getSymb();
-
-    // BoolConst => end
-    if (token === 'boolean') {
+    // BoolConst => end of expression
+    if (getSymb().token === 'boolean') {
+      const { token, lexeme } = parseToken(null, 'boolean');
       postfixCode.push({ lexeme, token });
-      numRow++;
+
       identLevel--;
-      return;
+      return true;
     }
 
     // Unary minus

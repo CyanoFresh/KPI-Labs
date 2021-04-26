@@ -1,17 +1,51 @@
+const prompt = require('prompt-sync')();
 const { parse } = require('./parser');
 
 function interpreter(path) {
-  let { postfixCode, ids, consts } = parse(path);
+  let { postfixCode, ids, consts, labels } = parse(path);
 
   let stack = [];
 
-  postfixCode.forEach(({ lexeme, token }) => {
-    if (['integer', 'real', 'boolean', 'ident', 'keyword'].includes(token)) {
+  let i = 0;
+
+  while (i < postfixCode.length) {
+    const { lexeme, token } = postfixCode[i];
+
+    if (['integer', 'real', 'boolean', 'ident', 'keyword', 'label'].includes(token)) {
       stack.push({ lexeme, token });
+      i++;
+    } else if (['jump', 'jf'].includes(token)) {
+      i = doJump(token, i);
     } else {
       doIt(lexeme, token);
+      i++;
     }
-  });
+  }
+
+  function doJump(token, i) {
+    if (token === 'jf') {
+      const label = stack.pop();
+      const boolExpr = stack.pop();
+
+      if (boolExpr.lexeme === 'false') {
+        if (labels[label.lexeme] === undefined) {
+          throw new Error(`Cannot find label ${label.lexeme}`);
+        }
+
+        return labels[label.lexeme];
+      }
+
+      return i + 1;
+    } else if (token === 'jump') {
+      const label = stack.pop();
+
+      if (labels[label.lexeme] === undefined) {
+        throw new Error(`Cannot find label ${label.lexeme}`);
+      }
+
+      return labels[label.lexeme];
+    }
+  }
 
   function doIt(lexeme, token) {
     if (lexeme === '=' && token === 'assign_op') {
@@ -30,20 +64,20 @@ function interpreter(path) {
               throw new Error(`Variable ${right.lexeme} assign before declaration`);
             }
 
-            if (type.lexeme !== leftConst.type) {
+            if (type.lexeme !== left.token) {
               throw new Error(
-                `Incompatible type to assign ${leftConst.type} to ${type.lexeme} ${right.lexeme}`,
+                `Incompatible type to assign ${left.token} to ${type.lexeme} ${right.lexeme}`,
               );
             }
           } else {
-            if (row.type !== leftConst.type) {
+            if (row.type !== null && row.type !== left.token) {
               throw new Error(
-                `Incompatible type to assign ${leftConst.type} to ${row.type} ${row.lexeme}`,
+                `Incompatible type to assign ${left.token} to ${row.type} ${row.lexeme}`,
               );
             }
           }
 
-          row.type = leftConst.type;
+          row.type = left.token;
           row.value = leftConst.value;
         }
 
@@ -66,6 +100,28 @@ function interpreter(path) {
 
       if (consts.findIndex(row => row.lexeme === lexeme) === -1) {
         consts.push({ type: token, value, lexeme });
+      }
+    } else if (token === 'write') {
+      const { lexeme } = stack.pop();
+      const ident = findId(lexeme);
+
+      console.log('\t' + ident.lexeme + '=' + ident.value);
+    } else if (token === 'read') {
+      const { lexeme } = stack.pop();
+      const ident = findId(lexeme);
+
+      const input = prompt(`Enter ${ident.lexeme} (${ident.type}): `);
+
+      if (ident.type === 'integer') {
+        ident.value = parseInt(input);
+      } else if (ident.type === 'real') {
+        ident.value = parseFloat(input);
+      } else if (ident.type === 'boolean') {
+        ident.value = Boolean(input);
+      }
+
+      if (Number.isNaN(ident.value)) {
+        throw new Error(`Invalid input: NaN`);
       }
     }
   }

@@ -1,3 +1,1 @@
-real b = 6.0
-if (b > 5 && 5 < 2)
-}
+for real i = 0.0 by 0.5 while i < 3 do write(i)

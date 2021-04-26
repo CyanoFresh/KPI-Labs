@@ -10,6 +10,7 @@ function parse(path) {
   let numRow = 0;
   let identLevel = 0;
   let postfixCode = [];
+  let labels = {};
 
   function log() {
     console.log.apply(console.log, ['\t'.repeat(identLevel), ...arguments]);
@@ -54,6 +55,26 @@ function parse(path) {
     }
 
     return symbols[numRow];
+  }
+
+  function createLabel(name = 'm') {
+    let lexeme;
+    let i = 1;
+
+    do {
+      lexeme = name + '_' + i;
+      i++;
+    } while (labels[lexeme] !== undefined);
+
+    const label = { lexeme, token: 'label' };
+
+    labels[lexeme] = null;
+
+    return label;
+  }
+
+  function assignLabel(label) {
+    labels[label.lexeme] = postfixCode.length;
   }
 
   function parseStatementList() {
@@ -111,32 +132,45 @@ function parse(path) {
 
     postfixCode.push({ lexeme, token });
 
-    parseAssign();
+    const assign = parseAssign();
 
     identLevel--;
+
+    return assign;
   }
 
   function parseAssign() {
     log('parseAssign():');
 
-    parseToken(null, 'ident', true);
+    const { token, lexeme } = parseToken(null, 'ident', true);
     parseToken('=', 'assign_op');
     parseExpression();
 
     postfixCode.push({ lexeme: '=', token: 'assign_op' });
 
     identLevel--;
+
+    return { token, lexeme };
   }
 
   function parseIf() {
     log('parseIf():');
 
+    const endIfLabel = createLabel('@end_if');
+
     parseToken('if', 'keyword');
     parseToken('(', 'brackets_op');
     parseBoolExpr();
     parseToken(')', 'brackets_op');
+
+    postfixCode.push(endIfLabel);
+    postfixCode.push({ lexeme: 'JF', token: 'jf' });
+
     parseStatementList();
     parseToken('}', 'end_block');
+
+    assignLabel(endIfLabel);
+    postfixCode.push(endIfLabel);
 
     identLevel--;
   }
@@ -145,13 +179,50 @@ function parse(path) {
     log('parseFor():');
 
     parseToken('for', 'keyword');
-    parseDeclaration();
+    const i = parseDeclaration();
     parseToken('by', 'keyword');
+
+    // Initialize $step variable
+    ids.push({ lexeme: '$step', type: null, value: 0 });
+    consts.push({ lexeme: '0', type: 'integer', value: 0 });
+
+    const stepLabel = createLabel('@step');
+    const targetLabel = createLabel('@target');
+    const endForLabel = createLabel('@end_for');
+
+    postfixCode.push(targetLabel);
+    postfixCode.push({ lexeme: 'JUMP', token: 'jump' });
+
+    postfixCode.push(stepLabel);
+    assignLabel(stepLabel);
+
+    postfixCode.push({ lexeme: '$step', token: 'ident' });
     parseExpression();
+    postfixCode.push({ lexeme: '=', token: 'assign_op' });
+
+    postfixCode.push(i);
+    postfixCode.push({ lexeme: '$step', token: 'ident' });
+    postfixCode.push(i);
+    postfixCode.push({ lexeme: '+', token: 'add_op' });
+    postfixCode.push({ lexeme: '=', token: 'assign_op' });
+
+    postfixCode.push(targetLabel);
+    assignLabel(targetLabel);
+
     parseToken('while', 'keyword');
     parseBoolExpr();
+
+    postfixCode.push(endForLabel);
+    postfixCode.push({ lexeme: 'JF', token: 'jf' });
+
     parseToken('do', 'keyword');
     parseStatement();
+
+    postfixCode.push(stepLabel);
+    postfixCode.push({ lexeme: 'JUMP', token: 'jump' });
+
+    postfixCode.push(endForLabel);
+    assignLabel(endForLabel);
 
     identLevel--;
   }
@@ -189,8 +260,13 @@ function parse(path) {
 
     parseToken('read', 'keyword');
     parseToken('(', 'brackets_op');
-    parseToken(null, 'ident');
+
+    const { lexeme, token } = parseToken(null, 'ident');
+    postfixCode.push({ lexeme, token });
+
     parseToken(')', 'brackets_op');
+
+    postfixCode.push({ lexeme: 'READ', token: 'read' });
 
     identLevel--;
   }
@@ -200,8 +276,13 @@ function parse(path) {
 
     parseToken('write', 'keyword');
     parseToken('(', 'brackets_op');
-    parseToken(null, 'ident');
+
+    const { lexeme, token } = parseToken(null, 'ident');
+    postfixCode.push({ lexeme, token });
+
     parseToken(')', 'brackets_op');
+
+    postfixCode.push({ lexeme: 'WRITE', token: 'write' });
 
     identLevel--;
   }
@@ -288,10 +369,10 @@ function parse(path) {
 
   parseStatementList();
 
-  console.table(postfixCode);
+  console.log('Postfix:');
   console.log(postfixCode.map(row => row.lexeme).join(' '));
 
-  return { consts, ids, symbols, postfixCode };
+  return { consts, ids, labels, symbols, postfixCode };
 }
 
 module.exports = { parse };

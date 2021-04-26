@@ -50,10 +50,11 @@ function interpreter(path) {
         return row;
       });
     } else if (['add_op', 'mult_op', 'pow_op', 'rel_op', 'bool_op'].includes(token)) {
+      const operator = { lexeme, token };
       const right = stack.pop();
       const left = stack.pop();
 
-      processing_add_mult_op(left, lexeme, right);
+      processOperator(left, operator, right);
     } else if (lexeme === '@' && token === 'unary_minus') {
       const entry = stack.pop();
 
@@ -69,15 +70,15 @@ function interpreter(path) {
     }
   }
 
-  function processing_add_mult_op(left, lexeme, right) {
+  function processOperator(left, operator, right) {
     if (left.token === 'ident') {
       const id = findId(left.lexeme);
 
       if (id.type === null) {
         throw new Error(
-          `Uninitialized variable ${left.lexeme}: ${JSON.stringify(
-            left,
-          )} ${lexeme} ${JSON.stringify(right)}`,
+          `Uninitialized variable ${left.lexeme}: ${JSON.stringify(left)} ${
+            operator.lexeme
+          } ${JSON.stringify(right)}`,
         );
       }
 
@@ -92,9 +93,9 @@ function interpreter(path) {
 
       if (id.type === null) {
         throw new Error(
-          `Uninitialized variable ${right.lexeme}: ${JSON.stringify(
-            left,
-          )} ${lexeme} ${JSON.stringify(right)}`,
+          `Uninitialized variable ${right.lexeme}: ${JSON.stringify(left)} ${
+            operator.lexeme
+          } ${JSON.stringify(right)}`,
         );
       }
 
@@ -104,82 +105,90 @@ function interpreter(path) {
       right.value = findConst(right.lexeme).value;
     }
 
-    getValue(left, lexeme, right);
-  }
-
-  function getValue(left, lexeme, right) {
-    const result = {
-      lexeme: null,
-      token: null,
-      value: null,
-    };
-
-    const arithmeticTypes = ['integer', 'real'];
-    const isArithmeticOperands =
-      arithmeticTypes.includes(left.token) && arithmeticTypes.includes(right.token);
-    const isBooleanOperands = left.token === 'boolean' && right.token === 'boolean';
-
-    if (!isArithmeticOperands && !isBooleanOperands) {
+    if (!checkOperandsTypes(left, operator, right)) {
       throw new Error(
-        `Incompatible types: ${JSON.stringify(left)} ${lexeme} ${JSON.stringify(right)}`,
+        `Incompatible types: ${JSON.stringify(left)} ${operator.lexeme} ${JSON.stringify(right)}`,
       );
     }
 
-    if (['+', '-', '*', '^'].includes(lexeme)) {
-      if (left.token === 'real' || right.token === 'real') {
-        result.token = 'real';
-      } else {
-        result.token = 'integer';
-      }
-    } else if (['>', '<', '<=', '>=', '==', '!=', '&&', '||'].includes(lexeme)) {
-      result.token = 'boolean';
-    } else if (['/'].includes(lexeme)) {
-      result.token = 'real';
-    }
-
-    if (lexeme === '+') {
-      result.value = left.value + right.value;
-    } else if (lexeme === '-') {
-      result.value = left.value - right.value;
-    } else if (lexeme === '*') {
-      result.value = left.value * right.value;
-    } else if (lexeme === '/') {
-      if (right.value === 0) {
-        throw new Error(
-          `Division by zero: ${JSON.stringify(left)} ${lexeme} ${JSON.stringify(right)}`,
-        );
-      }
-
-      result.value = left.value / right.value;
-    } else if (lexeme === '^') {
-      result.value = left.value ** right.value;
-    } else if (lexeme === '>') {
-      result.value = left.value > right.value;
-    } else if (lexeme === '<') {
-      result.value = left.value < right.value;
-    } else if (lexeme === '>=') {
-      result.value = left.value >= right.value;
-    } else if (lexeme === '<=') {
-      result.value = left.value <= right.value;
-    } else if (lexeme === '==') {
-      result.value = left.value === right.value;
-    } else if (lexeme === '!=') {
-      result.value = left.value !== right.value;
-    } else if (lexeme === '&&') {
-      result.value = left.value && right.value;
-    } else if (lexeme === '||') {
-      result.value = left.value || right.value;
-    } else {
-      throw new Error(`Unknown operator "${lexeme}"`);
-    }
-
-    result.lexeme = result.value.toString();
+    const result = evalOperator(left, operator, right);
 
     stack.push({ lexeme: result.lexeme, token: result.token });
 
     if (consts.findIndex(row => row.lexeme === result.lexeme) === -1) {
       consts.push({ type: result.token, value: result.value, lexeme: result.lexeme });
     }
+  }
+
+  function checkOperandsTypes(left, operator, right) {
+    const arithmeticTypes = ['integer', 'real'];
+
+    const isArithmeticOperands =
+      arithmeticTypes.includes(left.token) && arithmeticTypes.includes(right.token);
+    const isBooleanOperands = left.token === 'boolean' && right.token === 'boolean';
+
+    return isArithmeticOperands || isBooleanOperands;
+  }
+
+  function getOperatorResultType(left, operator, right) {
+    if (['+', '-', '*', '^'].includes(operator.lexeme)) {
+      if (left.token === 'real' || right.token === 'real') {
+        return 'real';
+      } else {
+        return 'integer';
+      }
+    } else if (['/'].includes(operator.lexeme)) {
+      return 'real';
+    } else if (['rel_op', 'bool_op'].includes(operator.token)) {
+      return 'boolean';
+    }
+
+    throw new Error(`Unknown operator "${operator.lexeme}"`);
+  }
+
+  function evalOperator(left, operator, right) {
+    let value;
+
+    if (operator.lexeme === '+') {
+      value = left.value + right.value;
+    } else if (operator.lexeme === '-') {
+      value = left.value - right.value;
+    } else if (operator.lexeme === '*') {
+      value = left.value * right.value;
+    } else if (operator.lexeme === '/') {
+      if (right.value === 0) {
+        throw new Error(
+          `Division by zero: ${JSON.stringify(left)} ${operator.lexeme} ${JSON.stringify(right)}`,
+        );
+      }
+
+      value = left.value / right.value;
+    } else if (operator.lexeme === '^') {
+      value = left.value ** right.value;
+    } else if (operator.lexeme === '>') {
+      value = left.value > right.value;
+    } else if (operator.lexeme === '<') {
+      value = left.value < right.value;
+    } else if (operator.lexeme === '>=') {
+      value = left.value >= right.value;
+    } else if (operator.lexeme === '<=') {
+      value = left.value <= right.value;
+    } else if (operator.lexeme === '==') {
+      value = left.value === right.value;
+    } else if (operator.lexeme === '!=') {
+      value = left.value !== right.value;
+    } else if (operator.lexeme === '&&') {
+      value = left.value && right.value;
+    } else if (operator.lexeme === '||') {
+      value = left.value || right.value;
+    } else {
+      throw new Error(`Unknown operator "${operator.lexeme}"`);
+    }
+
+    const lexeme = value.toString();
+    const token = getOperatorResultType(left, operator, right);
+
+    return { lexeme, token, value };
   }
 
   function findConst(lexeme) {
@@ -202,10 +211,11 @@ function interpreter(path) {
     return row;
   }
 
-  console.log(`Interpretation has ended!`);
+  console.log(`\nInterpretation has ended!\n`);
 
   console.log(`Constants:`);
   console.table(consts);
+
   console.log(`Ids:`);
   console.table(ids);
 

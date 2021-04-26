@@ -1,8 +1,8 @@
 const fs = require('fs');
 
 const tokens = {
-  true: 'boolval',
-  false: 'boolval',
+  true: 'boolean',
+  false: 'boolean',
   integer: 'keyword',
   real: 'keyword',
   boolean: 'keyword',
@@ -204,7 +204,7 @@ function indexIdConst(state, lexeme, token) {
 
     if (token === 'integer') {
       value = parseInt(lexeme);
-    } else if (token === 'boolval') {
+    } else if (token === 'boolean') {
       value = lexeme === 'true';
     } else if (token === 'real') {
       value = parseFloat(lexeme);

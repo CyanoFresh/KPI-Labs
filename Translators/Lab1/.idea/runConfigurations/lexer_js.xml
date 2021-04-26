@@ -1,6 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="lexer.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/lexer.js" working-dir="$PROJECT_DIR$">
-    <output_file path="./log" />
-    <method v="2" />
-  </configuration>
-</component>

@@ -159,19 +159,25 @@ function parse(path) {
   function parseBoolExpr() {
     log('parseBoolExpr():');
 
-    if (getSymb().token === 'boolval') {
+    if (getSymb().token === 'boolean') {
+      let { token, lexeme } = getSymb();
+      postfixCode.push({ lexeme, token });
       numRow++;
       identLevel--;
       return true;
     }
 
     parseExpression();
-    parseToken(null, 'rel_op');
+    let { token, lexeme } = parseToken(null, 'rel_op');
     parseExpression();
 
+    postfixCode.push({ lexeme, token });
+
     if (getSymb().token === 'bool_op') {
+      let { token, lexeme } = getSymb();
       numRow++;
       parseBoolExpr();
+      postfixCode.push({ lexeme, token });
     }
 
     identLevel--;
@@ -202,8 +208,11 @@ function parse(path) {
   function parseExpression() {
     log('parseExpression():');
 
+    let { token, lexeme } = getSymb();
+
     // BoolConst => end
-    if (getSymb().token === 'boolval') {
+    if (token === 'boolean') {
+      postfixCode.push({ lexeme, token });
       numRow++;
       identLevel--;
       return;

@@ -6,7 +6,7 @@ function interpreter(path) {
   let stack = [];
 
   postfixCode.forEach(({ lexeme, token }) => {
-    if (['integer', 'real', 'ident', 'keyword'].includes(token)) {
+    if (['integer', 'real', 'boolean', 'ident', 'keyword'].includes(token)) {
       stack.push({ lexeme, token });
     } else {
       doIt(lexeme, token);
@@ -49,7 +49,7 @@ function interpreter(path) {
 
         return row;
       });
-    } else if (['add_op', 'mult_op', 'pow_op'].includes(token)) {
+    } else if (['add_op', 'mult_op', 'pow_op', 'rel_op', 'bool_op'].includes(token)) {
       const right = stack.pop();
       const left = stack.pop();
 
@@ -115,8 +115,11 @@ function interpreter(path) {
     };
 
     const arithmeticTypes = ['integer', 'real'];
+    const isArithmeticOperands =
+      arithmeticTypes.includes(left.token) && arithmeticTypes.includes(right.token);
+    const isBooleanOperands = left.token === 'boolean' && right.token === 'boolean';
 
-    if (!arithmeticTypes.includes(left.token) || !arithmeticTypes.includes(right.token)) {
+    if (!isArithmeticOperands && !isBooleanOperands) {
       throw new Error(
         `Incompatible types: ${JSON.stringify(left)} ${lexeme} ${JSON.stringify(right)}`,
       );
@@ -128,6 +131,8 @@ function interpreter(path) {
       } else {
         result.token = 'integer';
       }
+    } else if (['>', '<', '<=', '>=', '==', '!=', '&&', '||'].includes(lexeme)) {
+      result.token = 'boolean';
     } else if (['/'].includes(lexeme)) {
       result.token = 'real';
     }
@@ -148,6 +153,24 @@ function interpreter(path) {
       result.value = left.value / right.value;
     } else if (lexeme === '^') {
       result.value = left.value ** right.value;
+    } else if (lexeme === '>') {
+      result.value = left.value > right.value;
+    } else if (lexeme === '<') {
+      result.value = left.value < right.value;
+    } else if (lexeme === '>=') {
+      result.value = left.value >= right.value;
+    } else if (lexeme === '<=') {
+      result.value = left.value <= right.value;
+    } else if (lexeme === '==') {
+      result.value = left.value === right.value;
+    } else if (lexeme === '!=') {
+      result.value = left.value !== right.value;
+    } else if (lexeme === '&&') {
+      result.value = left.value && right.value;
+    } else if (lexeme === '||') {
+      result.value = left.value || right.value;
+    } else {
+      throw new Error(`Unknown operator "${lexeme}"`);
     }
 
     result.lexeme = result.value.toString();
@@ -181,7 +204,9 @@ function interpreter(path) {
 
   console.log(`Interpretation has ended!`);
 
+  console.log(`Constants:`);
   console.table(consts);
+  console.log(`Ids:`);
   console.table(ids);
 
   return { ids, consts };

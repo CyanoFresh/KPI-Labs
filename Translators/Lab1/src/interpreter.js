@@ -117,7 +117,7 @@ function interpreter(path) {
       } else if (ident.type === 'real') {
         ident.value = parseFloat(input);
       } else if (ident.type === 'boolean') {
-        ident.value = Boolean(input);
+        ident.value = input === 'true' || input === '1';
       }
 
       if (Number.isNaN(ident.value)) {

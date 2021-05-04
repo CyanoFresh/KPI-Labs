@@ -1,5 +1,18 @@
+package lab;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+
+@Component
 public class InputCommand implements Command {
-    public InputCommand(){
+    @Autowired
+    CommandFactory commandFactory;
+
+    @PostConstruct
+    void init() {
+        commandFactory.addCommand("input", this);
     }
 
     @Override
@@ -15,5 +28,4 @@ public class InputCommand implements Command {
 
         return "fields set successfully";
     }
-
 }

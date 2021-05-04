@@ -1,10 +1,15 @@
+package lab;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Scanner;
 
 public class MainController {
     PolygonInterface polygon;
     MainView view;
     MainService service;
-    CommandFactory commandFactory = CommandFactory.getInstance();
+    @Autowired
+    CommandFactory commandFactory;
 
     public MainController(PolygonInterface polygon, MainView view, MainService mainService) {
         this.polygon = polygon;

@@ -1,3 +1,7 @@
+package lab;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -6,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainService {
+    @Autowired
     protected PolygonInterface polygon;
     protected Class<? extends PolygonInterface> polygonClass;
     protected static MainService instance = new MainService();

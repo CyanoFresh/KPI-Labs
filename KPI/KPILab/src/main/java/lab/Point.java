@@ -1,3 +1,8 @@
+package lab;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Point {
     @Deprecated
     public Integer x, y;
@@ -31,6 +36,6 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point{" + x + ", " + y + '}';
+        return "lab.Point{" + x + ", " + y + '}';
     }
 }

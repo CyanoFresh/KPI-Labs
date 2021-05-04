@@ -1,3 +1,5 @@
+package lab;
+
 public interface PolygonInterface {
     Integer getVertexCount();
     void setVertexCount(Integer vertexCount);

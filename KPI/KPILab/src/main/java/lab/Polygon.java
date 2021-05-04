@@ -1,3 +1,8 @@
+package lab;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Polygon extends Point implements PolygonInterface {
     Integer vertexCount;
     Integer side;
@@ -19,7 +24,7 @@ public class Polygon extends Point implements PolygonInterface {
     @Override
     @InvokeAnnotation
     public String toString() {
-        return "Polygon{" +
+        return "lab.Polygon{" +
                 "vertexCount=" + vertexCount +
                 ", side=" + side +
                 ", S=" + calcS() +

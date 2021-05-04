@@ -1,1 +1,7 @@
-for real i = 0.0 by 0.5 while i < 3 do write(i)
+real a = 3.14
+integer b = 1
+boolean c = false
+
+if (a < b && c == false)
+    c = true
+}

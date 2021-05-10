@@ -1,5 +1,2 @@
-real a = 3.14
-
-if (a != 3.14)
-    a = 5.0
-}
+real b = 0.0
+read(a)

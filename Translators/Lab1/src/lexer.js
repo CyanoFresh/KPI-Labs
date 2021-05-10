@@ -32,7 +32,6 @@ const tokens = {
   '\n': 'nl',
   '(': 'brackets_op',
   ')': 'brackets_op',
-  '{': 'start_block',
   '}': 'end_block',
 };
 const tableIdentRealInteger = { 2: 'ident', 6: 'real', 9: 'integer' };

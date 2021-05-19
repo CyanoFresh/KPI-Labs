@@ -2,11 +2,6 @@ import numpy as np
 from operator import itemgetter
 import random
 
-gamma = 0.8
-N = 4 * 4
-states = np.arange(N)
-finish_state = 0
-Q = np.zeros((N, N))
 R = [
     [100, 0, -1, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
     [100, -1, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
@@ -25,6 +20,11 @@ R = [
     [-1, -1, 0, -1, -1, 0, -1, -1, 0, -1, -1, -1, -1, 0, -1, 0],
     [-1, -1, 0, -1, -1, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1],
 ]
+gamma = 0.8
+N = len(R)
+states = np.arange(N)
+finish_state = 0
+Q = np.zeros((N, N))
 
 
 def get_next_action(state, matrix):

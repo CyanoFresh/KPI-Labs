@@ -32,7 +32,6 @@ const tokens = {
   '\n': 'nl',
   '(': 'brackets_op',
   ')': 'brackets_op',
-  '{': 'start_block',
   '}': 'end_block',
 };
 const tableIdentRealInteger = { 2: 'ident', 6: 'real', 9: 'integer' };
@@ -101,26 +100,26 @@ const charClasses = {
   operators: '+-!=*/^<>&|(){}',
 };
 
-const errorMessages = {
-  101: () => `(${state}) Unknown char "${char}" at line ${line}`,
-  102: () => `(${state}) Expected "=" after "!" at line ${line}`,
-  103: () => `(${state}) Expected "&" after "&" at line ${line}`,
-  104: () => `(${state}) Expected "|" after "|" at line ${line}`,
-};
-
-const initState = 0; // q0 - стартовий стан
-
-let state = initState,
-  line = 1,
-  charIndex = 0,
-  char = '',
-  lexeme = '';
-
-let tableIds = [];
-let tableConst = [];
-let tableSymbols = [];
-
 function lex(path) {
+  const initState = 0; // q0 - стартовий стан
+
+  const errorMessages = {
+    101: () => `(${state}) Unknown char "${char}" at line ${line}`,
+    102: () => `(${state}) Expected "=" after "!" at line ${line}`,
+    103: () => `(${state}) Expected "&" after "&" at line ${line}`,
+    104: () => `(${state}) Expected "|" after "|" at line ${line}`,
+  };
+
+  let state = initState,
+    line = 1,
+    charIndex = 0,
+    char = '',
+    lexeme = '';
+
+  let tableIds = [];
+  let tableConst = [];
+  let tableSymbols = [];
+
   const sourceCode = fs.readFileSync(path).toString();
 
   while (charIndex < sourceCode.length) {
@@ -140,130 +139,130 @@ function lex(path) {
     charIndex++;
   }
 
+  function processing() {
+    if (states.star.includes(state)) {
+      charIndex--;
+    }
+
+    if (states.newLine.includes(state)) {
+      line++;
+      state = initState;
+    } else if ([...states.const, ...states.ident].includes(state)) {
+      const token = getToken(state, lexeme);
+      let index = null;
+
+      if (token !== 'keyword') {
+        index = indexIdConst(state, lexeme, token);
+      }
+
+      tableSymbols.push({ line, lexeme, token, index });
+
+      lexeme = '';
+      state = initState;
+    } else if (states.operators.includes(state)) {
+      if (lexeme === '' || states.double_operators.includes(state)) {
+        lexeme += char;
+      }
+
+      const token = getToken(state, lexeme);
+
+      tableSymbols.push({ line, lexeme, token, index: null });
+
+      lexeme = '';
+      state = initState;
+    } else if (states.error.includes(state)) {
+      throw new Error(errorMessages[state]());
+    }
+  }
+
+  function getToken(state, lexeme) {
+    if (tokens[lexeme]) {
+      return tokens[lexeme];
+    }
+
+    return tableIdentRealInteger[state];
+  }
+
+  function indexIdConst(state, lexeme, token) {
+    if (states.const.includes(state) || ['true', 'false'].includes(lexeme)) {
+      const index = tableConst.findIndex(row => row.lexeme === lexeme);
+
+      if (index !== -1) {
+        return index;
+      }
+
+      let type = token;
+      let value = lexeme;
+
+      if (token === 'integer') {
+        value = parseInt(lexeme);
+      } else if (token === 'boolean') {
+        value = lexeme === 'true';
+      } else if (token === 'real') {
+        value = parseFloat(lexeme);
+      }
+
+      return tableConst.push({ lexeme, type, value }) - 1;
+    } else if (states.ident.includes(state)) {
+      const index = tableIds.findIndex(row => row.lexeme === lexeme);
+
+      if (index !== -1) {
+        return index;
+      }
+
+      return tableIds.push({ lexeme, type: null, value: null }) - 1;
+    }
+
+    throw new Error('Invalid state ' + state + ' and lexeme ' + lexeme);
+  }
+
+  /**
+   * @param {number} state
+   * @param {string} charClass
+   * @returns {number}
+   */
+  function nextState(state, charClass) {
+    // Exponential form hack:
+    if (states.exp.includes(state) && charClass === 'Letter' && char.toLowerCase() === 'e') {
+      return nextState(state, char.toLowerCase());
+    }
+
+    const stfRow = stf.find(row => row[0] === state && row[1] === charClass);
+
+    if (stfRow !== undefined) {
+      return stfRow[2];
+    }
+
+    if (charClass !== 'other') {
+      return nextState(state, 'other');
+    }
+
+    throw new Error('Unknown char "' + char + '" on line ' + line);
+  }
+
+  /**
+   * @param {string} char
+   * @returns {string}
+   */
+  function getCharClass(char) {
+    for (const [charClass, value] of Object.entries(charClasses)) {
+      if (value.includes(char.toLowerCase())) {
+        if (charClass === 'operators') {
+          return char;
+        }
+
+        return charClass;
+      }
+    }
+
+    throw new Error('Unknown char "' + char + '" on line ' + line);
+  }
+
   return {
     symbols: tableSymbols,
     consts: tableConst,
     ids: tableIds,
   };
-}
-
-function processing() {
-  if (states.star.includes(state)) {
-    charIndex--;
-  }
-
-  if (states.newLine.includes(state)) {
-    line++;
-    state = initState;
-  } else if ([...states.const, ...states.ident].includes(state)) {
-    const token = getToken(state, lexeme);
-    let index = null;
-
-    if (token !== 'keyword') {
-      index = indexIdConst(state, lexeme, token);
-    }
-
-    tableSymbols.push({ line, lexeme, token, index });
-
-    lexeme = '';
-    state = initState;
-  } else if (states.operators.includes(state)) {
-    if (lexeme === '' || states.double_operators.includes(state)) {
-      lexeme += char;
-    }
-
-    const token = getToken(state, lexeme);
-
-    tableSymbols.push({ line, lexeme, token, index: null });
-
-    lexeme = '';
-    state = initState;
-  } else if (states.error.includes(state)) {
-    throw new Error(errorMessages[state]());
-  }
-}
-
-function getToken(state, lexeme) {
-  if (tokens[lexeme]) {
-    return tokens[lexeme];
-  }
-
-  return tableIdentRealInteger[state];
-}
-
-function indexIdConst(state, lexeme, token) {
-  if (states.const.includes(state) || ['true', 'false'].includes(lexeme)) {
-    const index = tableConst.findIndex(row => row.lexeme === lexeme);
-
-    if (index !== -1) {
-      return index;
-    }
-
-    let type = token;
-    let value = lexeme;
-
-    if (token === 'integer') {
-      value = parseInt(lexeme);
-    } else if (token === 'boolean') {
-      value = lexeme === 'true';
-    } else if (token === 'real') {
-      value = parseFloat(lexeme);
-    }
-
-    return tableConst.push({ lexeme, type, value }) - 1;
-  } else if (states.ident.includes(state)) {
-    const index = tableIds.findIndex(row => row.lexeme === lexeme);
-
-    if (index !== -1) {
-      return index;
-    }
-
-    return tableIds.push({ lexeme, type: null, value: null }) - 1;
-  }
-
-  throw new Error('Invalid state ' + state + ' and lexeme ' + lexeme);
-}
-
-/**
- * @param {number} state
- * @param {string} charClass
- * @returns {number}
- */
-function nextState(state, charClass) {
-  // Exponential form hack:
-  if (states.exp.includes(state) && charClass === 'Letter' && char.toLowerCase() === 'e') {
-    return nextState(state, char.toLowerCase());
-  }
-
-  const stfRow = stf.find(row => row[0] === state && row[1] === charClass);
-
-  if (stfRow !== undefined) {
-    return stfRow[2];
-  }
-
-  if (charClass !== 'other') {
-    return nextState(state, 'other');
-  }
-
-  throw new Error('Unknown char "' + char + '" on line ' + line);
-}
-
-/**
- * @param {string} char
- * @returns {string}
- */
-function getCharClass(char) {
-  for (const [charClass, value] of Object.entries(charClasses)) {
-    if (value.includes(char.toLowerCase())) {
-      if (charClass === 'operators') {
-        return char;
-      }
-
-      return charClass;
-    }
-  }
-
-  throw new Error('Unknown char "' + char + '" on line ' + line);
 }
 
 module.exports = { lex };

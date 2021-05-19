@@ -9,7 +9,7 @@
 
  <!-- <context:property-placeholder location="classpath:config.properties" />-->
   <context:component-scan base-package="org.itstep"/>
-  <context:annotation-config></context:annotation-config>
+    <context:annotation-config/>
 
   <bean name="view" class="org.itstep.calculator.view.View"/>
   <bean name="inputStream" class="org.itstep.calculator.controller.InputStreamAdapter" factory-method="getInputStream" />

@@ -369,10 +369,6 @@ function parse(path) {
 
   parseStatementList();
 
-  console.table(labels);
-  console.log('Postfix:');
-  console.log(postfixCode.map(row => row.lexeme).join(' '));
-
   return { consts, ids, labels, symbols, postfixCode };
 }
 

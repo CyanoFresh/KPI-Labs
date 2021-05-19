@@ -1,1 +1,7 @@
-for real i = 0.0 by 0.5 while i < 3 do write(i)
+integer a = 123
+integer b = 123
+boolean identical = false
+if (a == b)
+    identical = true
+}
+write(identical)

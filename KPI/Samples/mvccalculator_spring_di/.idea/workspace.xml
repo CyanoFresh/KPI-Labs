@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="13ef8fb5-01f8-49a4-b1d0-95eb154996ea" name="Default" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="13ef8fb5-01f8-49a4-b1d0-95eb154996ea" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../AI/lab3/.idea/lab3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../KPILab/src/main/resources/context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../KPILab/src/test/java/lab/MainControllerIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvccalculator_spring/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvccalculator_spring/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/KPILab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/KPILab.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/CommandFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/CommandFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/InputCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/InputCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/InvokeAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/InvokeAnnotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/MainView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/MyProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/MyProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/PolygonInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/PolygonInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/main/java/PrintCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/main/java/lab/PrintCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/test/java/MainControllerIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/test/java/MainServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/test/java/lab/MainServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/test/java/MyProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/test/java/lab/MyProxyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/test/java/PointTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/test/java/lab/PointTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KPILab/src/test/java/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KPILab/src/test/java/lab/PolygonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvccalculator_spring/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvccalculator_spring/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvccalculator_spring/.idea/libraries/Maven__org_projectlombok_lombok_1_18_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvccalculator_spring/.idea/libraries/Maven__org_projectlombok_lombok_1_18_20.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvccalculator_spring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvccalculator_spring/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvccalculator_spring/mvccalculator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvccalculator_spring/mvccalculator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_20.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvccalculator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mvccalculator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/itstep/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/itstep/calculator/_DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Translators/Lab1/data/test.xx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Translators/Lab1/data/test.xx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,125 +89,6 @@
   <component name="FavoritesManager">
     <favorites_list name="mvccalculator" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/model/CalculatorService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/SubCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-              <folding>
-                <element signature="e#463#464#0" expanded="true" />
-                <element signature="e#525#526#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/AddCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-              <folding>
-                <element signature="e#792#793#0" expanded="true" />
-                <element signature="e#821#822#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/DivCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-              <folding>
-                <element signature="e#494#495#0" expanded="true" />
-                <element signature="e#556#557#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/parser/TwoArgumentParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-131">
-              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/CalculatorServiceTestOld.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/Runner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="13" column="77" selection-start-line="13" selection-start-column="77" selection-end-line="13" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/CommandFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-              <folding>
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/itstep/calculator/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/model/junit5/CalculatorServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -169,6 +97,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -205,13 +136,6 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="MavenProjectNavigator">
     <treeState>
       <expand>
@@ -238,6 +162,8 @@
     <option name="width" value="1440" />
     <option name="height" value="800" />
   </component>
+  <component name="ProjectId" id="1s4eK1EpVXHBlNUJQAlFUFyvSuw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -355,12 +281,17 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558594537733" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mvccalculator_spring" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -386,18 +317,6 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.itstep.calculator.controller" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.Runner">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -426,6 +345,12 @@
         <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
       <method />
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -472,12 +397,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.itstep.calculator.Runner" />
       <module name="mvccalculator" />
@@ -494,6 +413,17 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -573,41 +503,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <module name="" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
@@ -616,11 +519,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Runner" />
       <item itemvalue="JUnit.CalculatorServiceTest" />
       <item itemvalue="JUnit.CalculatorServiceTestJU5" />
       <item itemvalue="JUnit.CalculatorServiceTest.add" />
       <item itemvalue="JUnit.CalculatorServiceTest.divideUsualExceptionally" />
-      <item itemvalue="Application.Runner" />
     </list>
     <recent_temporary>
       <list>
@@ -637,6 +540,7 @@
       <projects_view />
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -655,6 +559,7 @@
       <workItem from="1531325076808" duration="7144000" />
       <workItem from="1531406209243" duration="822000" />
       <workItem from="1533571484880" duration="2058000" />
+      <workItem from="1620136222827" duration="4522000" />
     </task>
     <servers />
   </component>
@@ -762,14 +667,25 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/io/BufferedReader.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../../../java/jdk1.8.0_112/src.zip!/java/io/BufferedReader.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11-sources.jar!/org/junit/Assert.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/org/hamcrest/Matcher.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/org/hamcrest/CoreMatchers.java" />
@@ -799,7 +715,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/util/Map.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../../../java/jdk1.8.0_112/src.zip!/java/util/Map.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/controller/parser/TwoArgumentParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -815,8 +731,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/util/Optional.java" />
-    <entry file="jar://C:/java/jdk1.8.0_112/src.zip!/java/util/function/Function.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../../../java/jdk1.8.0_112/src.zip!/java/util/Optional.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../../../java/jdk1.8.0_112/src.zip!/java/util/function/Function.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/org/itstep/calculator/OptionalSample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">

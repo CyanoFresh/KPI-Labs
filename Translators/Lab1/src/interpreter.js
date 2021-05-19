@@ -4,6 +4,10 @@ const { parse } = require('./parser');
 function interpreter(path) {
   let { postfixCode, ids, consts, labels } = parse(path);
 
+  console.log(postfixCode.map(row => row.lexeme).join(' '));
+
+  console.log('\n-------------------\n');
+
   let stack = [];
 
   let i = 0;
@@ -15,14 +19,14 @@ function interpreter(path) {
       stack.push({ lexeme, token });
       i++;
     } else if (['jump', 'jf'].includes(token)) {
-      i = doJump(token, i);
+      i = processJump(token, i);
     } else {
-      doIt(lexeme, token);
+      process(lexeme, token);
       i++;
     }
   }
 
-  function doJump(token, i) {
+  function processJump(token, i) {
     if (token === 'jf') {
       const label = stack.pop();
       const boolExpr = stack.pop();
@@ -47,7 +51,7 @@ function interpreter(path) {
     }
   }
 
-  function doIt(lexeme, token) {
+  function process(lexeme, token) {
     if (lexeme === '=' && token === 'assign_op') {
       const left = stack.pop();
       const right = stack.pop();
@@ -105,10 +109,18 @@ function interpreter(path) {
       const { lexeme } = stack.pop();
       const ident = findId(lexeme);
 
+      if (ident.value === null) {
+        throw new Error(`Undefined variable ${ident.lexeme} to write`);
+      }
+
       console.log('\t' + ident.lexeme + '=' + ident.value);
     } else if (token === 'read') {
       const { lexeme } = stack.pop();
       const ident = findId(lexeme);
+
+      if (ident.value === null) {
+        throw new Error(`Undefined variable ${ident.lexeme} to read to`);
+      }
 
       const input = prompt(`Enter ${ident.lexeme} (${ident.type}): `);
 
@@ -267,10 +279,12 @@ function interpreter(path) {
     return row;
   }
 
-  console.log(`\nInterpretation has ended!\n`);
+  console.log('\n-------------------\n');
 
-  console.log(`Constants:`);
-  console.table(consts);
+  console.log(`Interpretation has ended!\n`);
+
+  // console.log(`Constants:`);
+  // console.table(consts);
 
   console.log(`Ids:`);
   console.table(ids);

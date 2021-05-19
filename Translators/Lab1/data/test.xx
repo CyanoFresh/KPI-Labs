@@ -1,2 +1,7 @@
-real b = 0.0
-read(a)
+integer a = 123
+integer b = 123
+boolean identical = false
+if (a == b)
+    identical = true
+}
+write(identical)

@@ -4,6 +4,10 @@ const { parse } = require('./parser');
 function interpreter(path) {
   let { postfixCode, ids, consts, labels } = parse(path);
 
+  console.log(postfixCode.map(row => row.lexeme).join(' '));
+
+  console.log('\n-------------------\n');
+
   let stack = [];
 
   let i = 0;
@@ -275,10 +279,12 @@ function interpreter(path) {
     return row;
   }
 
-  console.log(`\nInterpretation has ended!\n`);
+  console.log('\n-------------------\n');
 
-  console.log(`Constants:`);
-  console.table(consts);
+  console.log(`Interpretation has ended!\n`);
+
+  // console.log(`Constants:`);
+  // console.table(consts);
 
   console.log(`Ids:`);
   console.table(ids);

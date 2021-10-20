@@ -55,7 +55,7 @@ print('\n'.join([''.join(['{:6.0f}'.format(item) for item in row])
       for row in Q]))
 
 # Test
-state = 13
+state = 10
 
 while state != finish_state:
     next_action = get_next_action(state, Q)

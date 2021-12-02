@@ -5,7 +5,7 @@ edition = "2018"
 
 [[bin]]
 name = "untitled2"
-path = "src/ti-81_lab_01_var_17_SolomakhaOO.rs"
+path = "src/ti-81_lab_02_var_17_SolomakhaOO.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

@@ -95,7 +95,12 @@ fn task694g(n: usize) -> Vec<Vec<i32>> {
     matrix = matrix
         .iter()
         .enumerate()
-        .map(|(i, row)| row.iter().enumerate().map(|(j, &el)| return if i == j { ((i + 1) * (i + 2)) as i32 } else { el }).collect())
+        .map(
+            |(i, row)| row.iter()
+                .enumerate()
+                .map(|(j, &el)| if i == j { ((i + 1) * (i + 2)) as i32 } else { el })
+                .collect()
+        )
         .collect();
 
     println!("{:?}", matrix);
@@ -175,6 +180,7 @@ mod tests580 {
         let n = 4;
 
         let expected = vec![
+            //   20 10 5  1
             vec![0, 0, 0, 4],
         ];
 
@@ -188,6 +194,7 @@ mod tests580 {
         let n = 20;
 
         let expected = vec![
+            //   20 10 5  1
             vec![0, 0, 0, 20],
             vec![0, 0, 1, 15],
             vec![0, 0, 2, 10],
